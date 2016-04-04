@@ -1,0 +1,5 @@
+package dominioElementosDeljuego
+
+class Accion {
+	
+}
