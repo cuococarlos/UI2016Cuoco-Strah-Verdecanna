@@ -15,7 +15,7 @@ class AgregarItem extends MainWindow<Habitacion> {
 	}
 
 	override createContents(Panel mainPanel) {
-		
+
 		this.title = "Agregar Accion de Agarrar un Elemento"
 		new Label(mainPanel).text = "Escriba el elemento que aparecera en la Habitacion"
 		new TextBox(mainPanel) => [
@@ -36,23 +36,22 @@ class AgregarItem extends MainWindow<Habitacion> {
 		]
 		new Button(botonera) => [
 			caption = "Cancelar"
-			
-			
+			onClick[|resetearTextBox ]
 		]
-			
-	
 	}
 
 	def agregarElementoHabitacion(Panel panel) {
-		if(!modelObject.existeItem){
-			modelObject.agregarElementoHabitacion()	
-		}
-		else{
+		if (!modelObject.existeItem && !modelObject.textBox.empty) {
+			modelObject.agregarElementoHabitacion()
+		} else {
 			new Label(panel).text = "El elemento ya existe en la Habitacion"
 		}
-		
-	
+
 	//howInfo("se agrego un elemento")
+	}
+	
+	def resetearTextBox(){
+		modelObject.textBox= ""
 	}
 
 	def static main(String[] args) {

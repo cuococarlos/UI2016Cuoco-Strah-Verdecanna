@@ -1,4 +1,5 @@
 import dominioElementosDeljuego.Habitacion;
+import java.io.Serializable;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.uqbar.arena.layout.HorizontalLayout;
@@ -53,24 +54,45 @@ public class AgregarItem extends MainWindow<Habitacion> {
     final Procedure1<Button> _function_2 = new Procedure1<Button>() {
       public void apply(final Button it) {
         it.setCaption("Cancelar");
+        final Action _function = new Action() {
+          public void execute() {
+            AgregarItem.this.resetearTextBox();
+          }
+        };
+        it.onClick(_function);
       }
     };
     ObjectExtensions.<Button>operator_doubleArrow(_button_1, _function_2);
   }
   
-  public Object agregarElementoHabitacion(final Panel panel) {
-    Object _xifexpression = null;
+  public Serializable agregarElementoHabitacion(final Panel panel) {
+    Serializable _xifexpression = null;
+    boolean _and = false;
     Habitacion _modelObject = this.getModelObject();
     boolean _existeItem = _modelObject.existeItem();
     boolean _not = (!_existeItem);
-    if (_not) {
+    if (!_not) {
+      _and = false;
+    } else {
       Habitacion _modelObject_1 = this.getModelObject();
-      _xifexpression = _modelObject_1.agregarElementoHabitacion();
+      String _textBox = _modelObject_1.getTextBox();
+      boolean _isEmpty = _textBox.isEmpty();
+      boolean _not_1 = (!_isEmpty);
+      _and = _not_1;
+    }
+    if (_and) {
+      Habitacion _modelObject_2 = this.getModelObject();
+      _xifexpression = _modelObject_2.agregarElementoHabitacion();
     } else {
       Label _label = new Label(panel);
       _xifexpression = _label.setText("El elemento ya existe en la Habitacion");
     }
     return _xifexpression;
+  }
+  
+  public void resetearTextBox() {
+    Habitacion _modelObject = this.getModelObject();
+    _modelObject.setTextBox("");
   }
   
   public static void main(final String[] args) {

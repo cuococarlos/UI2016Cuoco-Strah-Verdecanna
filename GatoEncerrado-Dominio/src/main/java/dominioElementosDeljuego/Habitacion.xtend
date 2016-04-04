@@ -10,7 +10,7 @@ import org.uqbar.commons.utils.Observable
 class Habitacion {
 
 	var List<Item> itemsHabitacion = new ArrayList<Item>
-	String textBox
+	String textBox = ""
 
 	/////////////////////////metodos///////////////////////////////
 	//validacion para ver si la habitacion ya contiene ese Item
@@ -25,6 +25,7 @@ class Habitacion {
 			itemsHabitacion.add(item)
 			itemsHabitacion.forEach[i|println(i.nombre)]
 			println(itemsHabitacion)
+			textBox = ""
 
 		//mostrar la lista de elementos actuales	
 //		}else{
