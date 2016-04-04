@@ -1,5 +1,4 @@
-import dominioElementosDeljuego.Item;
-import org.eclipse.xtend.lib.annotations.Accessors;
+import dominioElementosDeljuego.Habitacion;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.uqbar.arena.layout.HorizontalLayout;
@@ -8,15 +7,15 @@ import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.TextBox;
+import org.uqbar.arena.windows.ErrorsPanel;
 import org.uqbar.arena.windows.MainWindow;
-import org.uqbar.commons.utils.Observable;
+import org.uqbar.lacar.ui.model.Action;
+import org.uqbar.lacar.ui.model.ControlBuilder;
 
-@Accessors
-@Observable
 @SuppressWarnings("all")
-public class AgregarItemWindow extends MainWindow<Item> {
-  public AgregarItemWindow() {
-    super(new Item());
+public class AgregarItem extends MainWindow<Habitacion> {
+  public AgregarItem() {
+    super(new Habitacion());
   }
   
   public void createContents(final Panel mainPanel) {
@@ -26,6 +25,7 @@ public class AgregarItemWindow extends MainWindow<Item> {
     TextBox _textBox = new TextBox(mainPanel);
     final Procedure1<TextBox> _function = new Procedure1<TextBox>() {
       public void apply(final TextBox it) {
+        it.<Object, ControlBuilder>bindValueToProperty("textBox");
         it.setWidth(100);
       }
     };
@@ -39,6 +39,12 @@ public class AgregarItemWindow extends MainWindow<Item> {
     final Procedure1<Button> _function_1 = new Procedure1<Button>() {
       public void apply(final Button it) {
         it.setCaption("Agregar Elemento");
+        final Action _function = new Action() {
+          public void execute() {
+            AgregarItem.this.agregarElementoHabitacion(mainPanel);
+          }
+        };
+        it.onClick(_function);
       }
     };
     ObjectExtensions.<Button>operator_doubleArrow(_button, _function_1);
@@ -46,8 +52,21 @@ public class AgregarItemWindow extends MainWindow<Item> {
     _button_1.setCaption("Cancelar");
   }
   
+  public Object agregarElementoHabitacion(final Panel panel) {
+    Object _xifexpression = null;
+    Habitacion _modelObject = this.getModelObject();
+    boolean _existeItem = _modelObject.existeItem();
+    if (_existeItem) {
+      _xifexpression = new ErrorsPanel(panel, "Ingrese un valor\n");
+    } else {
+      Habitacion _modelObject_1 = this.getModelObject();
+      _xifexpression = _modelObject_1.agregarElementoHabitacion();
+    }
+    return _xifexpression;
+  }
+  
   public static void main(final String[] args) {
-    AgregarItemWindow _agregarItemWindow = new AgregarItemWindow();
-    _agregarItemWindow.startApplication();
+    AgregarItem _agregarItem = new AgregarItem();
+    _agregarItem.startApplication();
   }
 }
