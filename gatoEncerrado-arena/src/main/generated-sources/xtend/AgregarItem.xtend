@@ -23,6 +23,7 @@ class AgregarItem extends MainWindow<Habitacion> {
 			//textBox = value
 			height = 20
 			width = 100
+			//////
 		]
 
 		mainPanel.layout = new VerticalLayout
