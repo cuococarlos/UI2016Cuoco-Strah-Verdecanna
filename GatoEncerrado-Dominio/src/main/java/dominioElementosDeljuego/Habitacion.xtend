@@ -20,7 +20,7 @@ class Habitacion {
 
 	def agregarElementoHabitacion() {
 		//if (!existeItem) {
-			val Item item = new Item
+			var Item item = new Item
 			item.nombre = textBox
 			itemsHabitacion.add(item)
 			itemsHabitacion.forEach[i|println(i.nombre)]
