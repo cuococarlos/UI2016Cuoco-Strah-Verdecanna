@@ -1,12 +1,11 @@
-import org.uqbar.arena.windows.MainWindow
 import dominioElementosDeljuego.Habitacion
-import org.uqbar.arena.widgets.Panel
-import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.layout.HorizontalLayout
+import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
-import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.widgets.Label
-import org.uqbar.arena.windows.ErrorsPanel
+import org.uqbar.arena.widgets.Panel
+import org.uqbar.arena.widgets.TextBox
+import org.uqbar.arena.windows.MainWindow
 
 class AgregarItem extends MainWindow<Habitacion> {
 
@@ -16,13 +15,14 @@ class AgregarItem extends MainWindow<Habitacion> {
 	}
 
 	override createContents(Panel mainPanel) {
+		
 		this.title = "Agregar Accion de Agarrar un Elemento"
 		new Label(mainPanel).text = "Escriba el elemento que aparecera en la Habitacion"
 		new TextBox(mainPanel) => [
 			bindValueToProperty("textBox")
 			//textBox = value
+			height = 20
 			width = 100
-			
 		]
 
 		mainPanel.layout = new VerticalLayout
@@ -31,20 +31,27 @@ class AgregarItem extends MainWindow<Habitacion> {
 
 		new Button(botonera) => [
 			caption = "Agregar Elemento"
+			setAsDefault() //se asocia al Enter del Usuario
 			onClick[|agregarElementoHabitacion(mainPanel)]
 		]
-		new Button(botonera).caption = "Cancelar"
-
+		new Button(botonera) => [
+			caption = "Cancelar"
+			
+			
+		]
+			
+	
 	}
 
 	def agregarElementoHabitacion(Panel panel) {
-		if(modelObject.existeItem){
-			new ErrorsPanel(panel, "Ingrese un valor\n")
+		if(!modelObject.existeItem){
+			modelObject.agregarElementoHabitacion()	
 		}
 		else{
-			modelObject.agregarElementoHabitacion()
+			new Label(panel).text = "El elemento ya existe en la Habitacion"
 		}
-
+		
+	
 	//howInfo("se agrego un elemento")
 	}
 

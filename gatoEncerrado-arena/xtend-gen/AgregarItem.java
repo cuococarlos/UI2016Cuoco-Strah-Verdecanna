@@ -7,7 +7,6 @@ import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.TextBox;
-import org.uqbar.arena.windows.ErrorsPanel;
 import org.uqbar.arena.windows.MainWindow;
 import org.uqbar.lacar.ui.model.Action;
 import org.uqbar.lacar.ui.model.ControlBuilder;
@@ -26,6 +25,7 @@ public class AgregarItem extends MainWindow<Habitacion> {
     final Procedure1<TextBox> _function = new Procedure1<TextBox>() {
       public void apply(final TextBox it) {
         it.<Object, ControlBuilder>bindValueToProperty("textBox");
+        it.setHeight(20);
         it.setWidth(100);
       }
     };
@@ -39,6 +39,7 @@ public class AgregarItem extends MainWindow<Habitacion> {
     final Procedure1<Button> _function_1 = new Procedure1<Button>() {
       public void apply(final Button it) {
         it.setCaption("Agregar Elemento");
+        it.setAsDefault();
         final Action _function = new Action() {
           public void execute() {
             AgregarItem.this.agregarElementoHabitacion(mainPanel);
@@ -49,18 +50,25 @@ public class AgregarItem extends MainWindow<Habitacion> {
     };
     ObjectExtensions.<Button>operator_doubleArrow(_button, _function_1);
     Button _button_1 = new Button(botonera);
-    _button_1.setCaption("Cancelar");
+    final Procedure1<Button> _function_2 = new Procedure1<Button>() {
+      public void apply(final Button it) {
+        it.setCaption("Cancelar");
+      }
+    };
+    ObjectExtensions.<Button>operator_doubleArrow(_button_1, _function_2);
   }
   
   public Object agregarElementoHabitacion(final Panel panel) {
     Object _xifexpression = null;
     Habitacion _modelObject = this.getModelObject();
     boolean _existeItem = _modelObject.existeItem();
-    if (_existeItem) {
-      _xifexpression = new ErrorsPanel(panel, "Ingrese un valor\n");
-    } else {
+    boolean _not = (!_existeItem);
+    if (_not) {
       Habitacion _modelObject_1 = this.getModelObject();
       _xifexpression = _modelObject_1.agregarElementoHabitacion();
+    } else {
+      Label _label = new Label(panel);
+      _xifexpression = _label.setText("El elemento ya existe en la Habitacion");
     }
     return _xifexpression;
   }
