@@ -9,9 +9,9 @@ import org.uqbar.arena.windows.MainWindow
 
 class AgregarItem extends MainWindow<Habitacion> {
 
-	//String textBox = "LOLITA"
+
 	new() {
-		super(new Habitacion)
+		super(new Habitacion())
 	}
 
 	override createContents(Panel mainPanel) {
@@ -37,23 +37,22 @@ class AgregarItem extends MainWindow<Habitacion> {
 		]
 		new Button(botonera) => [
 			caption = "Cancelar"
-			onClick[|resetearTextBox ]
+//			onClick[|resetearTextBox ]
 		]
 	}
 
 	def agregarElementoHabitacion(Panel panel) {
-		if (!modelObject.existeItem && !modelObject.textBox.empty) {
-			modelObject.agregarElementoHabitacion()
-		} else {
-			new Label(panel).text = "El elemento ya existe en la Habitacion"
-		}
+//		if (!modelObject.existeItem && !modelObject.textBox.empty) {
+//			modelObject.agregarElementoHabitacion()
+//		} else {
+//			new Label(panel).text = "El elemento ya existe en la Habitacion"
+//		}
 
 	//howInfo("se agrego un elemento")
 	}
 	
-	def resetearTextBox(){
-		modelObject.textBox= ""
-	}
+	
+	
 
 	def static main(String[] args) {
 		new AgregarItem().startApplication

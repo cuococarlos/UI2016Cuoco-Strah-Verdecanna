@@ -1,9 +1,23 @@
 package dominioElementosDeljuego
 
+import org.eclipse.xtend.lib.annotations.Accessors
+
+@Accessors
+
 class AccionAgarrarItem extends Accion{
+	var Item item
 	
-	override realizarAccion() {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	new(Item i){
+		item = i
+		
 	}
-	
+	override realizarAccion(Jugador j) {
+		j.inventario.add(item)
+	}
+	override void asignarAHabitacion(Habitacion h)
+	{
+		h.agregarElementoHabitacion(item)
+		h.agregarAccion(this)	
+		
+	}
 }
