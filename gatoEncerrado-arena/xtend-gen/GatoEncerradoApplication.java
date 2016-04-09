@@ -1,12 +1,11 @@
-import dominioElementosDeljuego.Laberinto;
 import org.uqbar.arena.Application;
 import org.uqbar.arena.windows.Window;
 
 @SuppressWarnings("all")
 public class GatoEncerradoApplication extends Application {
   protected Window<?> createMainWindow() {
-    Laberinto _laberinto = new Laberinto();
-    return new AgregarAccionIrAOtraHabitacionWindow(this, _laberinto);
+    throw new Error("Unresolved compilation problems:"
+      + "\nInvalid number of arguments. The constructor Laberinto(String) is not applicable without arguments");
   }
   
   public static void main(final String[] args) {

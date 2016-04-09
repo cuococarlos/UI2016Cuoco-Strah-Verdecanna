@@ -12,6 +12,16 @@ class Laberinto {
 	List<Habitacion> habitacionesQueLaComponen = new ArrayList<Habitacion>
 	Habitacion actualDeJuego
 	Object habitacionALaCualIr
+
+	String nombreLaberinto 
+	
+	new (String nombre) {
+		nombreLaberinto = nombre
+	}
+	
+	def crearLaberinto(Laberinto lab){
+		
+	}
 	
 	
 	def Habitacion comienzoLaberinto(){
