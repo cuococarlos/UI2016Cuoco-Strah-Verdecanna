@@ -1,12 +1,12 @@
-import dominioElementosDeljuego.AccionIrAOtraHabitacion;
+import dominioElementosDeljuego.Laberinto;
 import org.uqbar.arena.Application;
 import org.uqbar.arena.windows.Window;
 
 @SuppressWarnings("all")
 public class GatoEncerradoApplication extends Application {
   protected Window<?> createMainWindow() {
-    AccionIrAOtraHabitacion _accionIrAOtraHabitacion = new AccionIrAOtraHabitacion();
-    return new AgregarAccionWindow(this, _accionIrAOtraHabitacion);
+    Laberinto _laberinto = new Laberinto();
+    return new AgregarAccionIrAOtraHabitacionWindow(this, _laberinto);
   }
   
   public static void main(final String[] args) {

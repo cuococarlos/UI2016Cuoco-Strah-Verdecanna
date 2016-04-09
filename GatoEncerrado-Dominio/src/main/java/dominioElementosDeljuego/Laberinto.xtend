@@ -11,6 +11,8 @@ import org.uqbar.commons.utils.Observable
 class Laberinto {
 	List<Habitacion> habitacionesQueLaComponen = new ArrayList<Habitacion>
 	Habitacion actualDeJuego
+	Object habitacionALaCualIr
+	
 	
 	def Habitacion comienzoLaberinto(){
 		
@@ -26,6 +28,16 @@ class Laberinto {
 	
 	def sacarItem(Item item) {
 		actualDeJuego.sacarItemDeHabitacion(item)
+	}
+	
+	
+	def List<Habitacion> getHabitaciones(){
+		return this.habitacionesQueLaComponen;
+	}
+	
+	
+	def void setHabitacionALaCualIr(Object valor) {
+		this.habitacionALaCualIr = valor;
 	}
 	
 }

@@ -18,8 +18,7 @@ class AgregarAccionWindow extends SimpleWindow<Accion>{
 	
 	override createFormPanel(Panel mainPanel) {
 		val editorPanel = new Panel(mainPanel)
-		editorPanel.layout = new ColumnLayout(3)	
-		
+		editorPanel.layout = new ColumnLayout(3)			
 	}
 
 

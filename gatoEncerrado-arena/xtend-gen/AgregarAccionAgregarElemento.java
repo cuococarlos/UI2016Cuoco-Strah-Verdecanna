@@ -1,4 +1,4 @@
-import dominioElementosDeljuego.AccionUsarElemento;
+import dominioElementosDeljuego.AccionUsarItem;
 import dominioElementosDeljuego.Item;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
@@ -9,13 +9,13 @@ import org.uqbar.arena.widgets.Selector;
 import org.uqbar.arena.windows.MainWindow;
 
 @SuppressWarnings("all")
-public class AgregarAccionAgregarElemento extends MainWindow<AccionUsarElemento> {
+public class AgregarAccionAgregarElemento extends MainWindow<AccionUsarItem> {
   public AgregarAccionAgregarElemento() {
-    super(new AccionUsarElemento());
+    super(new AccionUsarItem());
   }
   
   public void createContents(final Panel mainPanel) {
-    this.setTitle("Agregar Accion de Usar un Elemento");
+    this.setTitle("Agregara Accion de Usar un Elemento");
     Label _label = new Label(mainPanel);
     _label.setText("Seleccione el Elemento que puede ser usado");
     Selector<Item> _selector = new Selector<Item>(mainPanel);
