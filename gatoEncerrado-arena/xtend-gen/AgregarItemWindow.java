@@ -11,9 +11,9 @@ import org.uqbar.arena.widgets.TextBox;
 import org.uqbar.arena.windows.MainWindow;
 import org.uqbar.commons.utils.Observable;
 
+@SuppressWarnings("all")
 @Accessors
 @Observable
-@SuppressWarnings("all")
 public class AgregarItemWindow extends MainWindow<Item> {
   public AgregarItemWindow() {
     super(new Item());
