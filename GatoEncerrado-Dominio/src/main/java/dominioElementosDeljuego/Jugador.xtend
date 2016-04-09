@@ -10,14 +10,23 @@ import org.uqbar.commons.utils.Observable
 class Jugador {
 	
 	List<Item> inventario = new ArrayList<Item>
-
+    Laberinto  actuallaberinto
 
 def void hacerAccion(AccionAgarrarItem accionDeAgarrar) {
 	this.inventario.add(accionDeAgarrar.item)
+	actuallaberinto.sacarItem(accionDeAgarrar.item)
 }
 def void hacerAccion(AccionUsarItem accionDeUsar){
 	
-	this.inventario.remove(accionDeUsar.item)
+	inventario.remove(accionDeUsar.item)
+	actuallaberinto.accionYaRealizada(accionDeUsar)
 }
+	
+	def pasarDeHabitacion(Habitacion habitacion) {
+		actuallaberinto.cambiarHabitacionDeJuego(habitacion)
+	}
+	
+
+	
 	
 }

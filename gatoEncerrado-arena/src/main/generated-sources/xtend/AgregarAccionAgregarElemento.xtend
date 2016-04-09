@@ -2,16 +2,17 @@
 
 import org.uqbar.arena.windows.MainWindow
 import org.uqbar.arena.widgets.Panel
-import dominioElementosDeljuego.AccionUsarElemento
+
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Selector
 import dominioElementosDeljuego.Item
 import org.uqbar.arena.widgets.Button
+import dominioElementosDeljuego.AccionUsarItem
 
-class AgregarAccionAgregarElemento extends MainWindow<AccionUsarElemento>{
+class AgregarAccionAgregarElemento extends MainWindow<AccionUsarItem>{
 	
 	new() {
-		super(new AccionUsarElemento)
+		super(new AccionUsarItem)
 	}
 	
 	override createContents(Panel mainPanel) {

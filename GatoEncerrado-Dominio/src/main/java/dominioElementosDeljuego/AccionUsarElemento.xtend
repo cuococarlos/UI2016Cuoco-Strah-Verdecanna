@@ -1,5 +1,0 @@
-package dominioElementosDeljuego
-
-class AccionUsarElemento {
-	
-}

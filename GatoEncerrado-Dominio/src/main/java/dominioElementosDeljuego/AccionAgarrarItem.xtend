@@ -12,12 +12,12 @@ class AccionAgarrarItem extends Accion{
 		
 	}
 	override realizarAccion(Jugador j) {
-		j.inventario.add(item)
+		j.hacerAccion(this)
 	}
 	override void asignarAHabitacion(Habitacion h)
 	{
 		h.agregarElementoHabitacion(item)
-		h.agregarAccion(this)	
+	     super.asignarAHabitacion(h)
 		
 	}
 }

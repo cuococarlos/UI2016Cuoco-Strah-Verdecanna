@@ -52,4 +52,13 @@ class Habitacion {
 //			throw new Exception("El Item ya existe en esa habitacion")
 //		}
 	}
+	
+	def eliminarAccion(Accion a) {
+		acciones.remove(a)
+	}
+	
+	def sacarItemDeHabitacion(Item item) {
+		itemsHabitacion.remove(item)
+	}
+	
 }

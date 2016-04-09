@@ -7,7 +7,8 @@ import org.eclipse.xtend.lib.annotations.Accessors
 class AccionUsarItem extends Accion{
 	var Item item
 	override realizarAccion(Jugador j) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		j.hacerAccion(this)
 	}
+	
 	
 }
