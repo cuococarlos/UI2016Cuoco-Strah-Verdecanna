@@ -10,4 +10,9 @@ import org.uqbar.commons.utils.Observable
 @Accessors
 class Laberinto {
 	List<Habitacion> habitacionesQueLaComponen = new ArrayList<Habitacion>
+	
+	
+	def Habitacion comienzoLaberinto(){
+		
+	}
 }

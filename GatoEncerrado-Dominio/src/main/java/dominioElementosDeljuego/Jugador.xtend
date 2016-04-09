@@ -18,5 +18,6 @@ def void hacerAccion(AccionAgarrarItem accionDeAgarrar) {
 def void hacerAccion(AccionUsarItem accionDeUsar){
 	
 	this.inventario.remove(accionDeUsar.item)
-}	
+}
+	
 }
