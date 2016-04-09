@@ -15,7 +15,7 @@ class AgregarAccionAgregarElemento extends MainWindow<AccionUsarElemento>{
 	}
 	
 	override createContents(Panel mainPanel) {
-		this.title = "Agregar Accion de Usar un Elemento"
+		this.title = "Agregara Accion de Usar un Elemento"
 		
 		new Label(mainPanel).text = "Seleccione el Elemento que puede ser usado"
 		new Selector<Item>(mainPanel) => [
