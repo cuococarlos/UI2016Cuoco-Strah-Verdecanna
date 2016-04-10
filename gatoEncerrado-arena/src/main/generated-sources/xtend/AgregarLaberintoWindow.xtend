@@ -18,9 +18,7 @@ class AgregarLaberintoWindow extends Dialog<Administrador>{
 	
 	//var String nombreLaberinto
 	
-	new(WindowOwner owner, Laberinto model) {
-		super(owner, new Administrador(model))
-	}
+	
 	
 	override protected createFormPanel(Panel mainPanel) {
 		this.title = "Agregar Laberinto"
@@ -41,7 +39,7 @@ class AgregarLaberintoWindow extends Dialog<Administrador>{
 		new Button(botonera) => [
 			caption = "Crear Laberinto"
 			setAsDefault() //se asocia al Enter del Usuario
-			onClick[|modelObject.crearLaberinto]
+			onClick[]
 		]
 		new Button(botonera) => [
 			caption = "Cancelar"

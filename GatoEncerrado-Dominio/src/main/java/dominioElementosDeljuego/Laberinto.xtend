@@ -11,17 +11,14 @@ import org.uqbar.commons.utils.Observable
 class Laberinto {
 	List<Habitacion> habitacionesQueLaComponen = new ArrayList<Habitacion>
 	Habitacion actualDeJuego
-	Object habitacionALaCualIr
-
+	Habitacion habitacionALaCualIr
 	String nombreLaberinto 
 	
 	new (String nombre) {
 		nombreLaberinto = nombre
 	}
 	
-	def crearLaberinto(Laberinto lab){
-		
-	}
+	
 	
 	
 	def Habitacion comienzoLaberinto(){
@@ -46,7 +43,7 @@ class Laberinto {
 	}
 	
 	
-	def void setHabitacionALaCualIr(Object valor) {
+	def void setHabitacionALaCualIr(Habitacion valor) {
 		this.habitacionALaCualIr = valor;
 	}
 	

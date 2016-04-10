@@ -8,16 +8,15 @@ import org.uqbar.commons.utils.Observable
 class Administrador {
 	
 	BibliotecaDeJuego biblioteca	
-	Laberinto laberinto
-	Habitacion habitacion
-	Accion accion
+//	Laberinto laberinto          No termino de entender la funcionalidad por la cual el administrador deberia tener
+//	Habitacion habitacion        un laberinto, una habitacion y una accion
+//	Accion accion
 	
-	new(Laberinto laberinto){
-		this.laberinto = laberinto
+	
+	
+	def crearLaberinto() {
+		
 	}
 	
-	
-	def crearLaberinto(){
-		laberinto.crearLaberinto(laberinto)
-	}
+
 }
