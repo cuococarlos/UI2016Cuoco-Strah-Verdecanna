@@ -1,4 +1,5 @@
 import dominioElementosDeljuego.Administrador
+import dominioElementosDeljuego.BibliotecaDeJuego
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.List
@@ -6,41 +7,55 @@ import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 
-class AdministradorWindow extends SimpleWindow<Administrador> {
+import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import org.uqbar.arena.layout.VerticalLayout
 
-	new(WindowOwner parent, Administrador model) {
-		super(parent, model)
+class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
+
+	new(WindowOwner parent, BibliotecaDeJuego model) {
+		
+		super(parent, new BibliotecaDeJuegoAppModel(model))
 	}
 
 	override protected addActions(Panel actionsPanel) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 
 	override protected createFormPanel(Panel mainPanel) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		val Panel todo = new Panel(mainPanel)
+		todo.layout = new HorizontalLayout
+		laberintos(todo)
+		habitacionesDelLaberinto(todo)
+//		habitacionDelLaberinto(mainPanel)
+
 	}
-
-	override createMainTemplate(Panel mainPanel) {
-		this.title = "Seguidor de carrera"
-		var panelLaberintos = new Panel(mainPanel)
-
-		new List(panelLaberintos) => [
-			//(items <=> "carrera.materias").adapter = new PropertyAdapter(Materia, "nombreMateria")
-			//items => "model.biblioteca"
+	
+	def habitacionesDelLaberinto(Panel panel) {
+		var panelDeHabitaciones = new Panel(panel)
+		panelDeHabitaciones.layout = new VerticalLayout
+		
+		
+		new List(panelDeHabitaciones) => [
+			items <=> "laberintoSeleccionado.habitaciones"
 		]
-
+		
+	}
+	
+	protected def laberintos(Panel mainPanel) {
+		var panelLaberintos = new Panel(mainPanel)
+		
+		new List(panelLaberintos) => [
+			items <=> "laberintos"
+			value <=> "laberintoSeleccionado"
+		]
+		
 		var botonera = new Panel(panelLaberintos)
 		botonera.layout = new HorizontalLayout
 		new Button(botonera) => [
 			caption = "Agregar Laberinto"
-			//onClick[|agregarLaberinto]
+			onClick[ | new AgregarLaberintoWindow(this, this.modelObject.juego).open()]
 		]
-		new Button(botonera) => [
-			caption = "Cancelar"
-			//onClick[|resetearTextBox ]
-		]
-
 	}
 
 
 }
+

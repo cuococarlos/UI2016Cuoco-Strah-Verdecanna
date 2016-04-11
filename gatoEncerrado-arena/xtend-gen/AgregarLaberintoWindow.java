@@ -1,35 +1,34 @@
-import dominioElementosDeljuego.Administrador;
-import dominioElementosDeljuego.Laberinto;
-import org.eclipse.xtend.lib.annotations.Accessors;
+import dominioElementosDeljuego.BibliotecaDeJuego;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.uqbar.arena.bindings.ObservableValue;
 import org.uqbar.arena.layout.HorizontalLayout;
 import org.uqbar.arena.widgets.Button;
+import org.uqbar.arena.widgets.Control;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.TextBox;
-import org.uqbar.arena.windows.Dialog;
+import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
-import org.uqbar.commons.utils.Observable;
+import org.uqbar.arena.xtend.ArenaXtendExtensions;
 import org.uqbar.lacar.ui.model.Action;
+import org.uqbar.lacar.ui.model.ControlBuilder;
 
-@Accessors
-@Observable
 @SuppressWarnings("all")
-public class AgregarLaberintoWindow extends Dialog<Administrador> {
-  public AgregarLaberintoWindow(final WindowOwner owner, final Laberinto model) {
-    super(owner, new Administrador(model));
+public class AgregarLaberintoWindow extends SimpleWindow<AgregarLaberintoAppModel> {
+  public AgregarLaberintoWindow(final WindowOwner owner, final BibliotecaDeJuego biblioteca) {
+    super(owner, new AgregarLaberintoAppModel(biblioteca));
+    this.setTitle("Agregar Laberinto");
   }
   
   protected void createFormPanel(final Panel mainPanel) {
-    this.setTitle("Agregar Laberinto");
     Label _label = new Label(mainPanel);
     _label.setText("Escriba el Nombre del Laberinto a crear");
     TextBox _textBox = new TextBox(mainPanel);
     final Procedure1<TextBox> _function = new Procedure1<TextBox>() {
       public void apply(final TextBox it) {
-        it.setHeight(20);
-        it.setWidth(100);
+        ObservableValue<Control, ControlBuilder> _value = it.<ControlBuilder>value();
+        ArenaXtendExtensions.operator_spaceship(_value, "nombreLaberinto");
       }
     };
     ObjectExtensions.<TextBox>operator_doubleArrow(_textBox, _function);
@@ -43,8 +42,9 @@ public class AgregarLaberintoWindow extends Dialog<Administrador> {
         it.setAsDefault();
         final Action _function = new Action() {
           public void execute() {
-            Administrador _modelObject = AgregarLaberintoWindow.this.getModelObject();
+            AgregarLaberintoAppModel _modelObject = AgregarLaberintoWindow.this.getModelObject();
             _modelObject.crearLaberinto();
+            AgregarLaberintoWindow.this.close();
           }
         };
         it.onClick(_function);
@@ -55,8 +55,17 @@ public class AgregarLaberintoWindow extends Dialog<Administrador> {
     final Procedure1<Button> _function_2 = new Procedure1<Button>() {
       public void apply(final Button it) {
         it.setCaption("Cancelar");
+        final Action _function = new Action() {
+          public void execute() {
+            AgregarLaberintoWindow.this.close();
+          }
+        };
+        it.onClick(_function);
       }
     };
     ObjectExtensions.<Button>operator_doubleArrow(_button_1, _function_2);
+  }
+  
+  protected void addActions(final Panel actionsPanel) {
   }
 }
