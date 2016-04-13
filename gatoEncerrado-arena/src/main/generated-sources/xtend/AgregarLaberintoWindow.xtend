@@ -15,7 +15,6 @@ class AgregarLaberintoWindow extends SimpleWindow<AgregarLaberintoAppModel>{
 		super(owner, new AgregarLaberintoAppModel(biblioteca))
 		this.title = "Agregar Laberinto"
 	}
-
 	
 	override protected createFormPanel(Panel mainPanel) {
 		new Label(mainPanel).text = "Escriba el Nombre del Laberinto a crear"

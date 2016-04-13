@@ -61,4 +61,8 @@ class Habitacion {
 		itemsHabitacion.remove(item)
 	}
 	
+	def crearYAgregarHabitacion(Habitacion habitacion, Laberinto laberinto) {
+		laberinto.habitaciones.add(habitacion)
+	}
+	
 }
