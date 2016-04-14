@@ -110,7 +110,10 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 	 	botoneraAcciones.layout = new HorizontalLayout
 	 	new Button(botoneraAcciones)=> [
 	 		caption = "Agregar Accion"
-	 	]
+	 			onClick[|new AgregarAccionWindow(this, this.modelObject.habitacionSeleccionada,this.modelObject.laberintoSeleccionado).open]
+		]
+		
+	 	
 	 	
 	 	new Button(botoneraAcciones)=> [
 	 		caption = "Quitar Accion"

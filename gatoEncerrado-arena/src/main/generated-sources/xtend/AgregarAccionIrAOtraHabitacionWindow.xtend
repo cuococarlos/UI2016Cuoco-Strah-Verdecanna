@@ -6,8 +6,9 @@ import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.Selector
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
-import GatoEncerradoApplication
 import dominioElementosDeljuego.Habitacion
+import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import org.uqbar.arena.bindings.PropertyAdapter
 
 class AgregarAccionIrAOtraHabitacionWindow extends SimpleWindow<AgregarAccionIrAOtraHabitacionAppModel>{
 	
@@ -22,14 +23,13 @@ class AgregarAccionIrAOtraHabitacionWindow extends SimpleWindow<AgregarAccionIrA
 		editorPanel.layout = new ColumnLayout(2)
 		
 		new Label(editorPanel).text = "Habitacion"
-		new Selector(editorPanel) => [
-			allowNull = false
-			width = 100
-		//  hay que ver como funciona el tema de las listas
-		//	items => "habitacionesQueLaComponen.habitaciones"
-		//	value => "habitacionALaCualIr"
+		new Selector<Habitacion>(editorPanel) => [
+			allowNull (false)
+//		  hay que ver como funciona el tema de las listas
+			value <=> "habitacionDestino"
+			(items <=> "laberintoActual.habitaciones").adapter = new PropertyAdapter(Habitacion, "nombre")
 		]
-				
+					
 	}
 	
 
@@ -39,27 +39,22 @@ class AgregarAccionIrAOtraHabitacionWindow extends SimpleWindow<AgregarAccionIrA
 			new Button(actionsPanel) => [
 				caption = "Cancelar"
 				setAsDefault
-				onClick [ | volver ]									
+				onClick [ |this.close  ]									
 			]
 
 
 			new Button(actionsPanel) => [
 				caption = "Agregar"
 				setAsDefault
-				onClick [ | agregarYVolver ]									
+				onClick [ | modelObject.crearYAgregarAccionDeIrOtraHabitacion()
+							this.close
+				]									
 			]
 
 	}
 	
 	
 	
-	def volver() {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
-	
-	def agregarYVolver() {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
 	
 	
 

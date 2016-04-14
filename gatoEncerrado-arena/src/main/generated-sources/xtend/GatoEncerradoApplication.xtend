@@ -6,7 +6,7 @@ class GatoEncerradoApplication extends Application{
 	
 	
 	override protected createMainWindow() {
-		new AgregarAccionWindow(this, new AccionIrAOtraHabitacion)
+		//new AgregarAccionWindow(this, new AccionIrAOtraHabitacion)
 	}
 	
 	def static main(String[] args) {

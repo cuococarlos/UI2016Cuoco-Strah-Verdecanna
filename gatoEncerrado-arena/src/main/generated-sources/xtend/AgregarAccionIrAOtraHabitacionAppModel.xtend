@@ -3,9 +3,15 @@
 import dominioElementosDeljuego.Habitacion
 import dominioElementosDeljuego.AccionIrAOtraHabitacion
 import dominioElementosDeljuego.Laberinto
+import org.eclipse.xtend.lib.annotations.Accessors
+import org.uqbar.commons.utils.Observable
+
+@Accessors
+@Observable
 
 class AgregarAccionIrAOtraHabitacionAppModel {
 	Habitacion habitacionActual
+	Habitacion habitacionDestino
 	AccionIrAOtraHabitacion accionActual
 	Laberinto laberintoActual
 	
@@ -19,6 +25,8 @@ class AgregarAccionIrAOtraHabitacionAppModel {
 	
 	
 	def void crearYAgregarAccionDeIrOtraHabitacion(){
+		
+		accionActual.asignarHabitacionDestino(habitacionDestino)
 		habitacionActual.agregarAccion(accionActual)
 	}
 		

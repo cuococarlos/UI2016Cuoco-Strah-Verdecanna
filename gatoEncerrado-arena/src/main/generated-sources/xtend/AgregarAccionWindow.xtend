@@ -4,13 +4,14 @@ import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
+import dominioElementosDeljuego.Habitacion
+import dominioElementosDeljuego.Laberinto
 
-class AgregarAccionWindow extends SimpleWindow<Accion>{
+class AgregarAccionWindow extends SimpleWindow<AgregarAccionAppModel>{
 	
 	
-	
-	new(WindowOwner parent, Accion accion) {
-		super(parent, accion)
+	new(WindowOwner parent, Habitacion hab,Laberinto lab) {
+	super(parent,new AgregarAccionAppModel(lab,hab))
 		title = "Agregar Acción"
 		taskDescription = "Seleccionar una acción a agregar"
 	}
@@ -43,7 +44,7 @@ class AgregarAccionWindow extends SimpleWindow<Accion>{
 			new Button(actionsPanel) => [
 				caption = "Agregar acción de usar un elemento"
 				setAsDefault
-				onClick [ | IrAPantallaAgregarAccionUsarUnElemento ]
+				onClick [ |   ]
 						
 			]
 					
@@ -51,7 +52,7 @@ class AgregarAccionWindow extends SimpleWindow<Accion>{
 	
 	
 	def IrAPantallaAgregarAccionIrAOtraHabitacion() {
-		throw new UnsupportedOperationException("TODO: Ir a la pantalla de ir a otra habitación")
+		new AgregarAccionIrAOtraHabitacionWindow(this,modelObject.habitacionActual,modelObject.laberintoActual).open
 	}
 	
 	

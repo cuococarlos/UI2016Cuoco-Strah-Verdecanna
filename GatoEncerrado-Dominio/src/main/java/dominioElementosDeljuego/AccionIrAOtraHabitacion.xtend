@@ -15,9 +15,11 @@ class AccionIrAOtraHabitacion extends Accion{
 		h.agregarAccion(this)	
 		
 	}
-	
+	def void asignarHabitacionDestino(Habitacion h)
 
-		
+		{
+			nueva=h
+		}
 		
 
 	}
