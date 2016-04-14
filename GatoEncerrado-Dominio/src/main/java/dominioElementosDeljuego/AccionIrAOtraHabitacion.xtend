@@ -2,6 +2,11 @@ package dominioElementosDeljuego
 
 class AccionIrAOtraHabitacion extends Accion{
 	Habitacion nueva
+	
+	new() {
+		
+	}
+	
 	override realizarAccion(Jugador j) {
 		j.pasarDeHabitacion(nueva)
 	}

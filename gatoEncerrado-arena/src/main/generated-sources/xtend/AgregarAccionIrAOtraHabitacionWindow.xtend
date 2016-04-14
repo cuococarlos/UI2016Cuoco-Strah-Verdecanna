@@ -7,13 +7,15 @@ import org.uqbar.arena.widgets.Selector
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 import GatoEncerradoApplication
+import dominioElementosDeljuego.Habitacion
 
-class AgregarAccionIrAOtraHabitacionWindow extends SimpleWindow<Laberinto>{
+class AgregarAccionIrAOtraHabitacionWindow extends SimpleWindow<AgregarAccionIrAOtraHabitacionAppModel>{
 	
-	new(WindowOwner parent, Laberinto laberinto) {
-		super(parent, laberinto)
+	new(WindowOwner owner, Habitacion hab,Laberinto lab) {
+		//super(owner, new AgregarHabitacionAppModel(biblioteca))
+		super(owner, new AgregarAccionIrAOtraHabitacionAppModel(hab,lab))
+		this.title = "Agregar Habitacion"
 	}
-
 
 	override protected createFormPanel(Panel mainPanel) {
 		val editorPanel = new Panel(mainPanel)

@@ -57,7 +57,7 @@ class Laberinto {
 	}
 
 	def void agregarHabitacion(Habitacion habitacion) {
-		this.habitaciones.add(habitacion)
+		this.habitacionesQueLaComponen.add(habitacion)
 	}
 	
 	def quitarHabitacion(Habitacion habitacion) {

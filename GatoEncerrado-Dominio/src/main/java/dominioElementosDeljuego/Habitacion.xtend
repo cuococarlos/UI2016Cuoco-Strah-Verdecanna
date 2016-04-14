@@ -8,17 +8,14 @@ import org.uqbar.commons.utils.Observable
 @Accessors
 @Observable
 class Habitacion {
-	val String nombre
+	var String nombre
 	var List<Item> itemsHabitacion
 	var List<Accion> acciones 
 	var List <Habitacion> habitaciones 
 	var  Boolean isHabitacionFinal
 	var  Boolean isHabitacionInical
 	
-	new(){
-		nombre=""
-//Ojo esto es un parche horrible no deberia estar ,miremolo es para que no rompa la vista		
-	}
+
 	new(String n){
 		
 		nombre=n
@@ -27,6 +24,11 @@ class Habitacion {
 		habitaciones = new ArrayList <Habitacion>
 		isHabitacionFinal=false
 		isHabitacionInical=false
+	}
+	
+	new(){
+		
+//Ojo esto es un parche horrible no deberia estar ,miremolo es para que no rompa la vista		
 	}
 	
 	/////////////////////////metodos///////////////////////////////
