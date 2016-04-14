@@ -1,7 +1,8 @@
-import dominioElementosDeljuego.Habitacion
-import dominioElementosDeljuego.Laberinto
+import dominioElementosDeljuego.BibliotecaDeJuego
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
+import dominioElementosDeljuego.Laberinto
+import dominioElementosDeljuego.Habitacion
 
 @Accessors
 @Observable
@@ -16,6 +17,20 @@ class AgregarHabitacionAppModel {
 		this.laberintoActual = laberinto 
 		habitacionActual = new Habitacion
 	}
+
+	//String nombreHabitacion
+	//	new (BibliotecaDeJuego juego){
+	//		this.juego = juego
+	//	}
+//	new() {
+//		this.habitacionActual = new Habitacion
+//
+//	//this.laberintoActual = lab
+//	}
+
+//	def void crearHabitacion() {
+//		habitacionActual.crearYAgregarHabitacion(habitacionActual, laberintoActual)
+//	}
 	
 	def void crearYAgregarHabitacion(){
 		laberintoActual.agregarHabitacion(habitacionActual)

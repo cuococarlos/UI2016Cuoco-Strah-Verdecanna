@@ -1,18 +1,19 @@
+import dominioElementosDeljuego.Administrador
 import dominioElementosDeljuego.BibliotecaDeJuego
-import dominioElementosDeljuego.Habitacion
-import dominioElementosDeljuego.Laberinto
-import org.uqbar.arena.bindings.PropertyAdapter
 import org.uqbar.arena.layout.HorizontalLayout
-import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
-import org.uqbar.arena.widgets.CheckBox
-import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import org.uqbar.arena.layout.VerticalLayout
+import org.uqbar.arena.bindings.PropertyAdapter
+import dominioElementosDeljuego.Laberinto
+import dominioElementosDeljuego.Habitacion
+import static org.uqbar.commons.model.ObservableUtils.*
+import org.uqbar.arena.widgets.Label
 
 class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 
@@ -30,15 +31,12 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		todo.layout = new HorizontalLayout
 		laberintos(todo)
 		habitacionesDelLaberinto(todo)
-		acciones(todo)
 
 	}
-	//throw new UserException('''Ya existe el laberinto con nombre «nombre»''')
+
 	def habitacionesDelLaberinto(Panel panel) {
 		var panelDeHabitaciones = new Panel(panel)
 		panelDeHabitaciones.layout = new VerticalLayout
-		//aca tengo que setear por defecto siempre el primer valor de la lista para que tome el nombre del laberinto
-		new Label(panelDeHabitaciones).text = "Habitaciones de : " //+ modelObject.laberintoSeleccionado.nombreLaberinto //'''Habitaciones de «nombre»''' //
 
 		new List(panelDeHabitaciones) => [
 			(items <=> "laberintoSeleccionado.habitaciones").adapter = new PropertyAdapter(Habitacion, "nombre")
@@ -60,7 +58,7 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 
 	def laberintos(Panel mainPanel) {
 		var panelLaberintos = new Panel(mainPanel)
-		new Label(panelLaberintos).text = "Laberintos"
+
 		new List(panelLaberintos) => [
 			(items <=> "juego.laberintos").adapter = new PropertyAdapter(Laberinto, "nombreLaberinto")
 			value <=> "laberintoSeleccionado"
@@ -70,51 +68,13 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		botonera.layout = new HorizontalLayout
 		new Button(botonera) => [
 			caption = "Agregar Laberinto"
-			//aca navego hasta 
 			onClick[|new AgregarLaberintoWindow(this, this.modelObject.juego).open()]
 		]
 		new Button(botonera) => [
 			caption = "Quitar Laberinto"
 			onClick[|modelObject.quitarLaberinto()]
 		]
-	}
-	
-	def acciones(Panel mainPanel){
-		var panelAcciones = new Panel(mainPanel)
-		panelAcciones.layout = new VerticalLayout
-		new Label(panelAcciones).text = "Habitacion Seleccionada"
-		
-		var panelEsEstadoInicialHabitacion = new Panel(panelAcciones)
-		panelEsEstadoInicialHabitacion.layout = new HorizontalLayout
-		new Label(panelEsEstadoInicialHabitacion).text = "Es Habitacion Inicial?"
-		new CheckBox(panelEsEstadoInicialHabitacion) => [
-			//enabled <=> "habitacionSeleccionada.isHabitacionFinal" 
-			value <=> "habitacionSeleccionada.isHabitacionInicial"
-		]
-		
-		var panelEsEstadoFinalHabitacion = new Panel(panelAcciones)
-		panelEsEstadoFinalHabitacion.layout = new HorizontalLayout
-		new Label(panelEsEstadoFinalHabitacion).text = "Es Habitacion Final?"
-		new CheckBox(panelEsEstadoFinalHabitacion) => [
-			//enabled <=> "habitacionSeleccionada.isHabitacionInicial"
-			value <=> "habitacionSeleccionada.isHabitacionFinal"
-		]
-		
-		var panelListadoAccionesHabitacion = new Panel(panelAcciones)
-		new Label(panelListadoAccionesHabitacion).text = "Acciones"
-		new List(panelListadoAccionesHabitacion)=> [
-			items <=> "habitacionSeleccionada.acciones"
-		]
-		
-	 	var botoneraAcciones = new Panel(panelAcciones)
-	 	botoneraAcciones.layout = new HorizontalLayout
-	 	new Button(botoneraAcciones)=> [
-	 		caption = "Agregar Accion"
-	 	]
-	 	
-	 	new Button(botoneraAcciones)=> [
-	 		caption = "Quitar Accion"
-	 	]
+
 	}
 
 }

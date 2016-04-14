@@ -1,4 +1,3 @@
-import dominioElementosDeljuego.Habitacion;
 import dominioElementosDeljuego.Laberinto;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
@@ -12,10 +11,9 @@ import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.lacar.ui.model.Action;
 
 @SuppressWarnings("all")
-public class AgregarAccionIrAOtraHabitacionWindow /* extends /* SimpleWindow<AgregarAccionIrAOtraHabitacionAppModel> */  */{
-  public AgregarAccionIrAOtraHabitacionWindow(final WindowOwner owner, final Habitacion hab, final Laberinto lab) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nAgregarAccionIrAOtraHabitacionAppModel cannot be resolved.");
+public class AgregarAccionIrAOtraHabitacionWindow extends SimpleWindow<Laberinto> {
+  public AgregarAccionIrAOtraHabitacionWindow(final WindowOwner parent, final Laberinto laberinto) {
+    super(parent, laberinto);
   }
   
   protected void createFormPanel(final Panel mainPanel) {

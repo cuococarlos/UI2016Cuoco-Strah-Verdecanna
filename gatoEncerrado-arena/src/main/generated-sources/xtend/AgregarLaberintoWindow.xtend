@@ -11,7 +11,6 @@ import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import dominioElementosDeljuego.BibliotecaDeJuego
 
 class AgregarLaberintoWindow extends SimpleWindow<AgregarLaberintoAppModel>{
-	//aca necesito que reciba por parametro una BibliotecaDeJuego porque la clase AgregarLaberintoAppModel necesita de ese laberinto
 	new(WindowOwner owner, BibliotecaDeJuego biblioteca) {
 		super(owner, new AgregarLaberintoAppModel(biblioteca))
 		this.title = "Agregar Laberinto"
@@ -29,7 +28,6 @@ class AgregarLaberintoWindow extends SimpleWindow<AgregarLaberintoAppModel>{
 			caption = "Crear Laberinto"
 			setAsDefault()
 			onClick[|
-				//aca llamo al metodo de la la clase de la cual extiendo
 				modelObject.crearLaberinto
 				this.close
 			]

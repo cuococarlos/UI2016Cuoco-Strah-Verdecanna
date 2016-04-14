@@ -17,7 +17,7 @@ public class AdministradorAplication extends Application {
           Laberinto _laberinto = new Laberinto("lab");
           final Procedure1<Laberinto> _function = new Procedure1<Laberinto>() {
             public void apply(final Laberinto it) {
-              Habitacion _habitacion = new Habitacion("Habitacion1");
+              Habitacion _habitacion = new Habitacion();
               it.agregarHabitacion(_habitacion);
             }
           };
@@ -26,7 +26,7 @@ public class AdministradorAplication extends Application {
           Laberinto _laberinto_1 = new Laberinto("lab2");
           final Procedure1<Laberinto> _function_1 = new Procedure1<Laberinto>() {
             public void apply(final Laberinto it) {
-              Habitacion _habitacion = new Habitacion("Habitacion2");
+              Habitacion _habitacion = new Habitacion();
               it.agregarHabitacion(_habitacion);
             }
           };
