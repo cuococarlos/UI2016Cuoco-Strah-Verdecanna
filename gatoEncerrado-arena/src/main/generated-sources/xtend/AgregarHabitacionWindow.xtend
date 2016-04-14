@@ -1,24 +1,23 @@
-
-
-import org.uqbar.arena.windows.SimpleWindow
-import org.uqbar.arena.windows.WindowOwner
-import org.uqbar.arena.widgets.Panel
-import dominioElementosDeljuego.BibliotecaDeJuego
-import org.uqbar.arena.widgets.Label
-import org.uqbar.arena.widgets.TextBox
-import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import dominioElementosDeljuego.Laberinto
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.widgets.Button
-import dominioElementosDeljuego.Laberinto
+import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.widgets.Panel
+import org.uqbar.arena.widgets.TextBox
+import org.uqbar.arena.windows.SimpleWindow
+import org.uqbar.arena.windows.WindowOwner
 
-class AgregarHabitacionWindow extends SimpleWindow<AgregarHabitacionAppModel>{
-	
+import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+
+class AgregarHabitacionWindow extends SimpleWindow<AgregarHabitacionAppModel> {
+
 	new(WindowOwner owner, Laberinto laberinto) {
+
 		//super(owner, new AgregarHabitacionAppModel(biblioteca))
 		super(owner, new AgregarHabitacionAppModel(laberinto))
 		this.title = "Agregar Habitacion"
 	}
-	
+
 	override protected createFormPanel(Panel mainPanel) {
 		new Label(mainPanel).text = "Escriba el Nombre de la Habitacion a crear"
 		new TextBox(mainPanel) => [
@@ -26,15 +25,23 @@ class AgregarHabitacionWindow extends SimpleWindow<AgregarHabitacionAppModel>{
 		]
 		var botonera = new Panel(mainPanel)
 		botonera.layout = new HorizontalLayout
-		new Button(botonera)=> [
+		new Button(botonera) => [
 			caption = "Crear Habitacion"
-			onClick [| modelObject.crearYAgregarHabitacion
+			onClick [|
+				modelObject.crearYAgregarHabitacion
 				this.close
 			]
+			setAsDefault()
+			onClick [|modelObject.crearYAgregarHabitacion]
+		]
+
+		new Button(botonera) => [
+			caption = "Cancelar"
+			onClick[this.close]
 		]
 	}
-	
+
 	override protected addActions(Panel actionsPanel) {
 	}
-	
+
 }

@@ -13,7 +13,7 @@ class Habitacion {
 	var List<Accion> acciones 
 	var List <Habitacion> habitaciones 
 	var  Boolean isHabitacionFinal
-	var  Boolean isHabitacionInical
+	var  Boolean isHabitacionInicial
 	
 
 	new(String n){
@@ -23,7 +23,7 @@ class Habitacion {
 		acciones = new ArrayList <Accion>
 		habitaciones = new ArrayList <Habitacion>
 		isHabitacionFinal=false
-		isHabitacionInical=false
+		isHabitacionInicial=false
 	}
 	
 	new(){
@@ -33,6 +33,21 @@ class Habitacion {
 	
 	/////////////////////////metodos///////////////////////////////
 	//validacion para ver si la habitacion ya contiene ese Item
+	
+	def getIsHabitacionFinal(){
+		if(isHabitacionInicial){
+			isHabitacionInicial = false	
+		}
+		return this.isHabitacionFinal
+	}
+	
+	def getIsHabitacionInicial(){
+		if(isHabitacionFinal){
+			isHabitacionFinal = false	
+		}
+		return this.isHabitacionInicial
+	}
+	
 	def existeItem(Item i) {
 		return itemsHabitacion.exists[item|item.equals(i)] 
 	}
