@@ -12,13 +12,12 @@ class Habitacion {
 	var List<Item> itemsHabitacion
 	var List<Accion> acciones 
 	var List <Habitacion> habitaciones 
-	var  Boolean isHabitacionFinal
-	var  Boolean isHabitacionInicial
+	var Boolean isHabitacionFinal
+	var Boolean isHabitacionInicial
 	
 
-	new(String n){
-		
-		nombre=n
+	new(String name){		
+		nombre = name
 		itemsHabitacion = new ArrayList<Item>
 		acciones = new ArrayList <Accion>
 		habitaciones = new ArrayList <Habitacion>
@@ -48,30 +47,30 @@ class Habitacion {
 		return this.isHabitacionInicial
 	}
 	
+	
 	def existeItem(Item i) {
 		return itemsHabitacion.exists[item|item.equals(i)] 
 	}
 	
-	def agregarAccion(Accion c){
-		
-		c.asignarAHabitacion(this)
+	
+	def agregarAccion(Accion accion){		
+		accion.asignarAHabitacion(this)
 	}
 
-	def agregarElementoHabitacion(Item item) {
+
+	def agregarElementoALaHabitacion(Item item) {
 		//if (!existeItem) {
 			itemsHabitacion.add(item)
 			itemsHabitacion.forEach[i|println(i.nombre)]
 			println(itemsHabitacion)
-
-
 		//mostrar la lista de elementos actuales	
 //		}else{
 //			throw new Exception("El Item ya existe en esa habitacion")
 //		}
 	}
 	
-	def eliminarAccion(Accion a) {
-		acciones.remove(a)
+	def eliminarAccion(Accion accion) {
+		acciones.remove(accion)
 	}
 	
 	def sacarItemDeHabitacion(Item item) {

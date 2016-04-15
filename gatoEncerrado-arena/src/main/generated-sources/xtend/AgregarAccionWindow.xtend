@@ -29,22 +29,20 @@ class AgregarAccionWindow extends SimpleWindow<AgregarAccionAppModel>{
 				caption = "Agregar acción de ir a otra habitación"
 				setAsDefault
 				onClick [ | IrAPantallaAgregarAccionIrAOtraHabitacion ]
-									
 			]
 
 
 			new Button(actionsPanel) => [
 				caption = "Agregar acción de agarrar un elemento"
 				setAsDefault
-				onClick [ | IrAPantallaAgregarAccionAgarrarUnElemento ]
-									
+				onClick [ | IrAPantallaAgregarAccionAgarrarUnElemento ]									
 			]
 
 
 			new Button(actionsPanel) => [
 				caption = "Agregar acción de usar un elemento"
 				setAsDefault
-				onClick [ |   ]
+				onClick [ | IrAPantallaAgregarAccionUsarUnElemento ]
 						
 			]
 					
@@ -57,12 +55,12 @@ class AgregarAccionWindow extends SimpleWindow<AgregarAccionAppModel>{
 	
 	
 	def IrAPantallaAgregarAccionAgarrarUnElemento() {
-		throw new UnsupportedOperationException("TODO: Ir a la pantalla de agarrar un elemento")
+		new AgregarAccionAgarrarElementoWindow(this,modelObject.habitacionActual,modelObject.laberintoActual).open
 	}
 
 
 	def IrAPantallaAgregarAccionUsarUnElemento() {
-		throw new UnsupportedOperationException("TODO: Ir a la pantalla de usar un elemento")
+		new AgregarAccionUsarElementoWindow(this,modelObject.habitacionActual,modelObject.laberintoActual).open
 	}
 	
 	

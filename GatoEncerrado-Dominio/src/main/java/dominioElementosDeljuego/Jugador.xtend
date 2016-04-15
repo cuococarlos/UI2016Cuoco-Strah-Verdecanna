@@ -12,15 +12,18 @@ class Jugador {
 	List<Item> inventario = new ArrayList<Item>
     Laberinto  actuallaberinto
 
-def void hacerAccion(AccionAgarrarItem accionDeAgarrar) {
-	this.inventario.add(accionDeAgarrar.item)
-	actuallaberinto.sacarItem(accionDeAgarrar.item)
-}
-def void hacerAccion(AccionUsarItem accionDeUsar){
-	
-	inventario.remove(accionDeUsar.item)
-	actuallaberinto.accionYaRealizada(accionDeUsar)
-}
+
+	def void hacerAccion(AccionAgarrarUnElemento accionDeAgarrar) {
+		this.inventario.add(accionDeAgarrar.item)
+		actuallaberinto.sacarItem(accionDeAgarrar.item)
+	}
+
+
+	def void hacerAccion(AccionUsarUnElemento accionDeUsar){		
+		inventario.remove(accionDeUsar.item)
+		actuallaberinto.accionYaRealizada(accionDeUsar)
+	}
+
 	
 	def pasarDeHabitacion(Habitacion habitacion) {
 		actuallaberinto.cambiarHabitacionDeJuego(habitacion)

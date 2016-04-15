@@ -7,5 +7,21 @@ import org.uqbar.commons.utils.Observable
 @Observable
 class Item {
 	
-	String nombre
+	var String nombre
+	
+	new(){}
+	
+	new(String name){
+		nombre = name
+	}
+	
+//	def void setNombre(String nombre){
+//		this.nombre = nombre
+//	}
+//	
+//	def String getNombre(){
+//		return this.nombre
+//	}		
+	
+	
 }

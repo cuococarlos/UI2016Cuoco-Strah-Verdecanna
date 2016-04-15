@@ -1,25 +1,28 @@
 package dominioElementosDeljuego
 
 class AccionIrAOtraHabitacion extends Accion{
-	Habitacion nueva
 	
-	new() {
-		
+	//Habitacion nueva
+	
+	
+	new() {	
 	}
 	
-	override realizarAccion(Jugador j) {
-		j.pasarDeHabitacion(nueva)
+	
+	override realizarAccion(Jugador jugador) {
+		jugador.pasarDeHabitacion(habitacionDestino)
 	}
-	override void asignarAHabitacion(Habitacion h)
-	{
-		h.agregarAccion(this)	
-		
+	
+	
+	override void asignarAHabitacion(Habitacion habitacion){
+		habitacion.agregarAccion(this)			
 	}
-	def void asignarHabitacionDestino(Habitacion h)
-
-		{
-			nueva=h
-		}
+	
+	
+	
+//	override void asignarHabitacionDestino(Habitacion h){
+//			nueva=h
+//	}
 		
 
 	}

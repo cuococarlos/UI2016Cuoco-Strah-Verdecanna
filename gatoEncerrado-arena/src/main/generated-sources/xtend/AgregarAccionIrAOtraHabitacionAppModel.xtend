@@ -9,13 +9,14 @@ import org.uqbar.commons.utils.Observable
 @Accessors
 @Observable
 
-class AgregarAccionIrAOtraHabitacionAppModel {
-	Habitacion habitacionActual
-	Habitacion habitacionDestino
-	AccionIrAOtraHabitacion accionActual
-	Laberinto laberintoActual
+class AgregarAccionIrAOtraHabitacionAppModel extends AgregarAccionAppModel{
+//	Habitacion habitacionActual
+//	Habitacion habitacionDestino
+//	AccionIrAOtraHabitacion accionActual
+//	Laberinto laberintoActual
+
 	
-		//esta habitacion y laberinto que recibo por parametro es la habitacionSeleccionada de la clase BibliotecaDeJuegoAppModel
+//esta habitacion y laberinto que recibo por parametro es la habitacionSeleccionada de la clase BibliotecaDeJuegoAppModel
 	new(Habitacion hab,Laberinto lab){
 		this.habitacionActual = hab
 		this.laberintoActual=lab
@@ -24,10 +25,11 @@ class AgregarAccionIrAOtraHabitacionAppModel {
 
 	
 	
-	def void crearYAgregarAccionDeIrOtraHabitacion(){
-		
+	def void crearYAgregarAccionDeIrOtraHabitacion(){		
 		accionActual.asignarHabitacionDestino(habitacionDestino)
 		habitacionActual.agregarAccion(accionActual)
 	}
 		
-	}
+		
+		
+}

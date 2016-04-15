@@ -25,7 +25,7 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 	}
 
 	override protected createFormPanel(Panel mainPanel) {
-		this.title = "Aca Hay Gato Encerrado"
+		this.title = "Aca Hay Gato Encerrado..."
 		val Panel todo = new Panel(mainPanel)
 		todo.layout = new HorizontalLayout
 		laberintos(todo)

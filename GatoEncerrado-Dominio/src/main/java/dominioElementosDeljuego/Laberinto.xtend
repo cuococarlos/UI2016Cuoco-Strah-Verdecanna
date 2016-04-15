@@ -38,8 +38,8 @@ class Laberinto {
 		actualDeJuego = habitacion
 	}
 
-	def accionYaRealizada(AccionUsarItem item) {
-		actualDeJuego.eliminarAccion(item)
+	def accionYaRealizada(AccionUsarUnElemento accionUsarUnElemento) {
+		actualDeJuego.eliminarAccion(accionUsarUnElemento)
 	}
 
 	def sacarItem(Item item) {

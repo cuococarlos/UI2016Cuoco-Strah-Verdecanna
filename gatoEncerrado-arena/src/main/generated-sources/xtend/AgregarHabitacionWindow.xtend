@@ -31,8 +31,8 @@ class AgregarHabitacionWindow extends SimpleWindow<AgregarHabitacionAppModel> {
 				modelObject.crearYAgregarHabitacion
 				this.close
 			]
-			setAsDefault()
-			onClick [|modelObject.crearYAgregarHabitacion]
+	//		setAsDefault()
+	//		onClick [|modelObject.crearYAgregarHabitacion]
 		]
 
 		new Button(botonera) => [

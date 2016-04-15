@@ -3,8 +3,10 @@ package dominioElementosDeljuego
 import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
-
 class AccionAgarrarItem extends Accion{
+	
+	// por ahora esta clase no se usa
+	
 	var Item item
 	
 	new(Item i){
@@ -12,12 +14,12 @@ class AccionAgarrarItem extends Accion{
 		
 	}
 	override realizarAccion(Jugador j) {
-		j.hacerAccion(this)
+	//	j.hacerAccion(this)
 	}
 	override void asignarAHabitacion(Habitacion h)
 	{
-		h.agregarElementoHabitacion(item)
-	     super.asignarAHabitacion(h)
+		h.agregarElementoALaHabitacion(item)
+	    // super.asignarAHabitacion(h)
 		
 	}
 }
