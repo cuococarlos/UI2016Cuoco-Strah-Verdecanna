@@ -1,9 +1,7 @@
-
-
-import dominioElementosDeljuego.Habitacion
-import dominioElementosDeljuego.Laberinto
 import dominioElementosDeljuego.AccionAgarrarUnElemento
+import dominioElementosDeljuego.Habitacion
 import dominioElementosDeljuego.Item
+import dominioElementosDeljuego.Laberinto
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
 
@@ -28,7 +26,7 @@ class AgregarAccionAgarrarElementoAppModel extends AgregarAccionAppModel{
 	}
 	
 	
-	def void crearYAgregarAccionDeAgarrarElemento(){		
+	def void crearYAgregarAccionDeAgarrarElemento(){
 		accionActual.asignarAHabitacion(habitacionActual)
 		habitacionActual.agregarAccion(accionActual)
 		habitacionActual.agregarElementoALaHabitacion(itemParaAgregar)

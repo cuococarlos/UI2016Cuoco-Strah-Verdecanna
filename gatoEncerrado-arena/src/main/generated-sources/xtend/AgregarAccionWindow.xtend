@@ -49,7 +49,7 @@ class AgregarAccionWindow extends SimpleWindow<AgregarAccionAppModel>{
 	}
 	
 	
-	def IrAPantallaAgregarAccionIrAOtraHabitacion() {
+	def IrAPantallaAgregarAccionIrAOtraHabitacion() {	
 		new AgregarAccionIrAOtraHabitacionWindow(this,modelObject.habitacionActual,modelObject.laberintoActual).open
 	}
 	

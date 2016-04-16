@@ -13,6 +13,7 @@ import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import gatoEncerradoExceptions.AgregarAccionException
 
 class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 
@@ -111,7 +112,7 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 	 	botoneraAcciones.layout = new HorizontalLayout
 	 	new Button(botoneraAcciones)=> [
 	 		caption = "Agregar Accion"
-	 			onClick[|new AgregarAccionWindow(this, this.modelObject.habitacionSeleccionada,this.modelObject.laberintoSeleccionado).open]
+	 			onClick[|IrAPantallaAgregarAccion]
 		]
 		
 	 	
@@ -120,5 +121,14 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 	 		caption = "Quitar Accion"
 	 	]
 	}
+	
+	
+	def IrAPantallaAgregarAccion() {
+		if(this.modelObject.habitacionSeleccionada == null){
+			throw new AgregarAccionException("Debe seleccionar una habitacion para poder agregarle una accion")
+		}
+		new AgregarAccionWindow(this, this.modelObject.habitacionSeleccionada,this.modelObject.laberintoSeleccionado).open
+	}
+
 
 }

@@ -5,6 +5,8 @@ import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
 import static org.uqbar.commons.model.ObservableUtils.*
+import org.uqbar.commons.model.UserException
+import gatoEncerradoExceptions.NombreYaExistenteException
 
 @Observable
 @Accessors
@@ -56,8 +58,11 @@ class Laberinto {
 		this.habitacionALaCualIr = valor;
 	}
 
-	def void agregarHabitacion(String nombreHabitacion) {
-		var Habitacion nuevaHabitacion = new Habitacion(nombreHabitacion)
+	def void agregarHabitacion(String nameHabitacion) {
+		if (habitacionesQueLaComponen.exists[it.nombreHabitacion == nameHabitacion]) {
+			throw new NombreYaExistenteException('''Ya existe la habitacion con nombre «nameHabitacion»''')
+		}
+		var Habitacion nuevaHabitacion = new Habitacion(nameHabitacion)
 		this.habitacionesQueLaComponen.add(nuevaHabitacion)
 	}
 	

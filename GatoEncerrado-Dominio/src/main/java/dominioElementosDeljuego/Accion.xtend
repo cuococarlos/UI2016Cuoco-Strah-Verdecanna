@@ -1,5 +1,7 @@
 package dominioElementosDeljuego
 
+import org.uqbar.commons.model.UserException
+
 abstract class Accion implements ElementosJuego {
 	
 	protected Habitacion habitacionDestino

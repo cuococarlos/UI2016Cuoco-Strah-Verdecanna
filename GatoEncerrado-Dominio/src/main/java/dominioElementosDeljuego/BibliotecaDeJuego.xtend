@@ -5,6 +5,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
 import org.uqbar.commons.model.UserException
 import static org.uqbar.commons.model.ObservableUtils.*
+import gatoEncerradoExceptions.NombreYaExistenteException
 
 @Accessors
 @Observable
@@ -21,7 +22,7 @@ class BibliotecaDeJuego {
 
 	def void crearYAgregarLaberinto(String nombre) {
 		if (laberintos.exists[it.nombreLaberinto == nombre]) {
-			throw new UserException('''Ya existe el laberinto con nombre «nombre»''')
+			throw new NombreYaExistenteException('''Ya existe el laberinto con nombre «nombre»''')
 		}
 		var Laberinto nuevoLaberinto = new Laberinto(nombre)
 		laberintos.add(nuevoLaberinto)
