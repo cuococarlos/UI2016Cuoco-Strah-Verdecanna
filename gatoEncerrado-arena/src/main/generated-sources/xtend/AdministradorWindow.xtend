@@ -21,13 +21,13 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 	 
 
 	new(WindowOwner parent, BibliotecaDeJuego model) {
-
 		super(parent, new BibliotecaDeJuegoAppModel(model))
 	}
 
 	override protected addActions(Panel actionsPanel) {
 	}
 
+// Panel principal
 	override protected createFormPanel(Panel mainPanel) {
 		this.title = "Aca Hay Gato Encerrado..."
 		val Panel todo = new Panel(mainPanel)
@@ -36,7 +36,8 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		habitacionesDelLaberinto(todo)
 		acciones(todo)
 	}
-
+	
+// -- INICIO --  Panel de Habitaciones   
 	def habitacionesDelLaberinto(Panel panel) {
 		var panelDeHabitaciones = new Panel(panel)
 		panelDeHabitaciones.layout = new VerticalLayout
@@ -54,17 +55,20 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 
 		var botoneraAddLaberintos = new Panel(panelDeHabitaciones)
 		botoneraAddLaberintos.layout = new HorizontalLayout
+		
 		new Button(botoneraAddLaberintos) => [
 			caption = "Agregar Habitacion"
 			onClick[|IrAPantallaAgregarHabitacion]
 		]
-
 		new Button(botoneraAddLaberintos) => [
 			caption = "Quitar Habitacion"
 			onClick [|modelObject.quitarHabitacion()]
 		]
 	}
+// -- FIN --  Panel de Habitaciones
 
+
+// -- INICIO --  Panel de Laberintos
 	def laberintos(Panel mainPanel) {
 		var panelLaberintos = new Panel(mainPanel)
 		panelLaberintos.width = 300 minHeight = 250
@@ -79,6 +83,7 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 
 		var botonera = new Panel(panelLaberintos)
 		botonera.layout = new HorizontalLayout
+		
 		new Button(botonera) => [
 			caption = "Agregar Laberinto"
 			//aca navego hasta 
@@ -89,8 +94,10 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 			onClick[ | modelObject.quitarLaberinto() ]
 		]
 	}
+// -- FIN --  Panel de Laberintos	
 	
 	
+// -- INICIO --  Panel de Acciones	
 	def acciones(Panel mainPanel){
 		var panelAcciones = new Panel(mainPanel)
 		panelAcciones.layout = new VerticalLayout
@@ -124,20 +131,19 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		
 	 	var botoneraAcciones = new Panel(panelAcciones)
 	 	botoneraAcciones.layout = new HorizontalLayout
+	 	
 	 	new Button(botoneraAcciones)=> [
 	 		caption = "Agregar Accion"
 	 			onClick[|IrAPantallaAgregarAccion]
-		]
-		
-	 	
-	 	
+		]	 	
 	 	new Button(botoneraAcciones)=> [
 	 		caption = "Quitar Accion"
 	 	]
 	}
+// -- FIN --  Panel de Acciones	
 	
 	
-	
+//   Metodos
 	def IrAPantallaAgregarAccion() {
 		if(this.modelObject.habitacionSeleccionada == null){
 			throw new AgregarAccionException(GatoEncerradoCommons.AGREGAR_ACCION_EXCEPTION)

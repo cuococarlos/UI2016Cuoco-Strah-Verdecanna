@@ -6,10 +6,11 @@ import dominioElementosDeljuego.Laberinto
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
 import gatoEncerradoExceptions.AgregarAccionException
+import commons.GatoEncerradoCommons
+
 
 @Accessors
 @Observable
-
 class AgregarAccionIrAOtraHabitacionAppModel extends AgregarAccionAppModel{
 
 
@@ -25,7 +26,7 @@ class AgregarAccionIrAOtraHabitacionAppModel extends AgregarAccionAppModel{
 	
 	def void crearYAgregarAccionDeIrOtraHabitacion(){	
 		if (habitacionActual == null) {
-			throw new AgregarAccionException("Debe seleccionar una habitacion para poder agregarle una accion")
+			throw new AgregarAccionException(GatoEncerradoCommons.AGREGAR_ACCION_EXCEPTION)
 		}	
 		accionActual.asignarAHabitacion(habitacionActual)	
 	}

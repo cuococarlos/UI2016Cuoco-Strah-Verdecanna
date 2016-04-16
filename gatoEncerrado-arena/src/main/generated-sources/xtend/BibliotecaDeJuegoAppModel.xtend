@@ -26,7 +26,7 @@ class BibliotecaDeJuegoAppModel {
 		juego.quitarLaberinto(laberintoSeleccionado)
 	}
 	
-	def quitarHabitacion() {
+	def void quitarHabitacion() {
 		laberintoSeleccionado.quitarHabitacion(habitacionSeleccionada)
 	}
 	

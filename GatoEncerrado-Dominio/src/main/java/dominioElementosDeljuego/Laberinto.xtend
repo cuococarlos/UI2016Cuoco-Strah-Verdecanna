@@ -19,7 +19,8 @@ class Laberinto {
 	String nombreLaberinto
 
 	new() {
-		this.habitacionesQueLaComponen = new ArrayList<Habitacion>()
+		//this.habitacionesQueLaComponen = new ArrayList<Habitacion>()
+		habitacionesQueLaComponen = newArrayList
 	}
 
 	new(String nombre) {
@@ -67,10 +68,10 @@ class Laberinto {
 		this.habitacionesQueLaComponen.add(nuevaHabitacion)
 	}
 	
-	def quitarHabitacion(Habitacion habitacion) {
-		this.habitaciones.remove(habitacion)
+	def void quitarHabitacion(Habitacion habitacion) {
 		//el nombre de la property por la cual se bindea las habitaciones de un laberinto se llama "habitaciones" por el getter definido, sino 
 		//la property se llamaria "habitacionesQueLaComponen"
+		habitaciones.remove(habitacion)
 		firePropertyChanged(this,"habitaciones",habitacionesQueLaComponen)
 	}
 
