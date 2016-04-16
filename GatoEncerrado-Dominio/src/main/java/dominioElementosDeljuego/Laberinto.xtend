@@ -78,6 +78,10 @@ class Laberinto {
 	def List todosLosItems(){
 	  //  this.habitacionesQueLaComponen.for[h| h.itemsHabitacion.] .Mensaje que se traiga la colecicon de todos los items
 	}
+	
+	def String getNombreLaberinto(){
+		return this.nombreLaberinto
+	}
 
 
 }

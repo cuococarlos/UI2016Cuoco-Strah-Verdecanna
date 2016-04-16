@@ -11,7 +11,7 @@ import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
-
+import static org.uqbar.commons.model.ObservableUtils.*
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import gatoEncerradoExceptions.AgregarAccionException
 import commons.GatoEncerradoCommons
@@ -35,19 +35,21 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		laberintos(todo)
 		habitacionesDelLaberinto(todo)
 		acciones(todo)
-
 	}
-	//throw new UserException('''Ya existe el laberinto con nombre «nombre»''')
+
 	def habitacionesDelLaberinto(Panel panel) {
 		var panelDeHabitaciones = new Panel(panel)
 		panelDeHabitaciones.layout = new VerticalLayout
-		panelDeHabitaciones.width = 100
+		panelDeHabitaciones.width = 300 minHeight = 250
 		//aca tengo que setear por defecto siempre el primer valor de la lista para que tome el nombre del laberinto
-		new Label(panelDeHabitaciones).text = "Habitaciones de:  " //+ getNombreLaberintoSeleccionado()  
-
+		new Label(panelDeHabitaciones).text =  "Habitaciones de Laberinto: "   
+		new Label(panelDeHabitaciones)=> [value <=> "laberintoSeleccionado.nombreLaberinto"]
+		
 		new List(panelDeHabitaciones) => [
 			(items <=> "laberintoSeleccionado.habitacionesQueLaComponen").adapter = new PropertyAdapter(Habitacion, "nombreHabitacion")
 			value <=> "habitacionSeleccionada"
+			width = 200
+			height = 100
 		]
 
 		var botoneraAddLaberintos = new Panel(panelDeHabitaciones)
@@ -65,10 +67,14 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 
 	def laberintos(Panel mainPanel) {
 		var panelLaberintos = new Panel(mainPanel)
+		panelLaberintos.width = 300 minHeight = 250
 		new Label(panelLaberintos).text = "Laberintos"
+		new Label(panelLaberintos).text =  ""
 		new List(panelLaberintos) => [
 			(items <=> "juego.laberintos").adapter = new PropertyAdapter(Laberinto, "nombreLaberinto")
 			value <=> "laberintoSeleccionado"
+			width = 200
+			height = 100
 		]
 
 		var botonera = new Panel(panelLaberintos)
@@ -84,14 +90,17 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		]
 	}
 	
+	
 	def acciones(Panel mainPanel){
 		var panelAcciones = new Panel(mainPanel)
 		panelAcciones.layout = new VerticalLayout
-		new Label(panelAcciones).text = "Habitacion Seleccionada"
+		panelAcciones.width = 300 minHeight = 250
+		new Label(panelAcciones).text = "Habitacion Seleccionada:"
+		new Label(panelAcciones)=> [value <=> "habitacionSeleccionada.nombreHabitacion"]
 		
 		var panelEsEstadoInicialHabitacion = new Panel(panelAcciones)
 		panelEsEstadoInicialHabitacion.layout = new HorizontalLayout
-		new Label(panelEsEstadoInicialHabitacion).text = "Es Habitacion Inicial?"
+		new Label(panelEsEstadoInicialHabitacion).text = "Es Inicial?"
 		new CheckBox(panelEsEstadoInicialHabitacion) => [
 			//enabled <=> "habitacionSeleccionada.isHabitacionFinal" 
 			value <=> "habitacionSeleccionada.isHabitacionInicial"
@@ -99,7 +108,7 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		
 		var panelEsEstadoFinalHabitacion = new Panel(panelAcciones)
 		panelEsEstadoFinalHabitacion.layout = new HorizontalLayout
-		new Label(panelEsEstadoFinalHabitacion).text = "Es Habitacion Final?"
+		new Label(panelEsEstadoFinalHabitacion).text = "Es Final?"
 		new CheckBox(panelEsEstadoFinalHabitacion) => [
 			//enabled <=> "habitacionSeleccionada.isHabitacionInicial"
 			value <=> "habitacionSeleccionada.isHabitacionFinal"
@@ -109,6 +118,8 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		new Label(panelListadoAccionesHabitacion).text = "Acciones"
 		new List(panelListadoAccionesHabitacion)=> [
 			items <=> "habitacionSeleccionada.acciones"
+			width = 160
+			height = 90
 		]
 		
 	 	var botoneraAcciones = new Panel(panelAcciones)
@@ -145,13 +156,6 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 
 	def IrAPantallaAgregarLaberinto() {
 		new AgregarLaberintoWindow(this, this.modelObject.juego).open()
-	}
-
-
-// este metodo no se usa, ver  	firePropertyChanged(this,"laberintos", laberintos)  de   BibliotecaDeJuego
-	def String getNombreLaberintoSeleccionado(){
-			//	firePropertyChanged(this,"laberintos", laberintos)
-		return modelObject.laberintoSeleccionado.nombreLaberinto
 	}
 
 }
