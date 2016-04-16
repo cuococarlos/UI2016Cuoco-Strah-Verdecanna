@@ -7,6 +7,7 @@ import org.uqbar.commons.utils.Observable
 import static org.uqbar.commons.model.ObservableUtils.*
 import org.uqbar.commons.model.UserException
 import gatoEncerradoExceptions.NombreYaExistenteException
+import commons.GatoEncerradoCommons
 
 @Observable
 @Accessors
@@ -60,7 +61,7 @@ class Laberinto {
 
 	def void agregarHabitacion(String nameHabitacion) {
 		if (habitacionesQueLaComponen.exists[it.nombreHabitacion == nameHabitacion]) {
-			throw new NombreYaExistenteException('''Ya existe la habitacion con nombre «nameHabitacion»''')
+			throw new NombreYaExistenteException(GatoEncerradoCommons.NOMBRE_HABITACION_EXISTENTE_EXCEPTION + '''«nameHabitacion»''')
 		}
 		var Habitacion nuevaHabitacion = new Habitacion(nameHabitacion)
 		this.habitacionesQueLaComponen.add(nuevaHabitacion)
@@ -71,6 +72,11 @@ class Laberinto {
 		//el nombre de la property por la cual se bindea las habitaciones de un laberinto se llama "habitaciones" por el getter definido, sino 
 		//la property se llamaria "habitacionesQueLaComponen"
 		firePropertyChanged(this,"habitaciones",habitacionesQueLaComponen)
+	}
+
+
+	def List todosLosItems(){
+	  //  this.habitacionesQueLaComponen.for[h| h.itemsHabitacion.] .Mensaje que se traiga la colecicon de todos los items
 	}
 
 

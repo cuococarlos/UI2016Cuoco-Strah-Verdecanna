@@ -4,6 +4,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
 import org.uqbar.commons.model.UserException
 import gatoEncerradoExceptions.AgregarHabitacionException
+import commons.GatoEncerradoCommons
 
 @Observable
 class AgregarHabitacionAppModel {
@@ -30,7 +31,7 @@ class AgregarHabitacionAppModel {
 	
 	def void crearYAgregarHabitacion(){
 		if (laberintoActual == null) {
-			throw new AgregarHabitacionException("Debe seleccionar un laberinto para poder agregarle una habitacion")
+			throw new AgregarHabitacionException(GatoEncerradoCommons.AGREGAR_HABITACION_EXCEPTION)
 		}
 		laberintoActual.agregarHabitacion(nombreHabitacion)
 	}

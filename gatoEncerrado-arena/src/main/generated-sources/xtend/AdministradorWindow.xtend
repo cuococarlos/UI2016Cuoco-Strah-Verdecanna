@@ -14,8 +14,11 @@ import org.uqbar.arena.windows.WindowOwner
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import gatoEncerradoExceptions.AgregarAccionException
+import commons.GatoEncerradoCommons
+import gatoEncerradoExceptions.AgregarHabitacionException
 
 class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
+	 
 
 	new(WindowOwner parent, BibliotecaDeJuego model) {
 
@@ -40,7 +43,7 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		panelDeHabitaciones.layout = new VerticalLayout
 		panelDeHabitaciones.width = 100
 		//aca tengo que setear por defecto siempre el primer valor de la lista para que tome el nombre del laberinto
-		new Label(panelDeHabitaciones).text = "Habitaciones de : " //+ modelObject.laberintoSeleccionado.nombreLaberinto //'''Habitaciones de «nombre»''' //
+		new Label(panelDeHabitaciones).text = "Habitaciones de:  " + getNombreLaberintoSeleccionado()  
 
 		new List(panelDeHabitaciones) => [
 			(items <=> "laberintoSeleccionado.habitacionesQueLaComponen").adapter = new PropertyAdapter(Habitacion, "nombreHabitacion")
@@ -51,7 +54,7 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		botoneraAddLaberintos.layout = new HorizontalLayout
 		new Button(botoneraAddLaberintos) => [
 			caption = "Agregar Habitacion"
-			onClick[|new AgregarHabitacionWindow(this, this.modelObject.laberintoSeleccionado).open]
+			onClick[|IrAPantallaAgregarHabitacion]
 		]
 
 		new Button(botoneraAddLaberintos) => [
@@ -73,11 +76,11 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		new Button(botonera) => [
 			caption = "Agregar Laberinto"
 			//aca navego hasta 
-			onClick[|new AgregarLaberintoWindow(this, this.modelObject.juego).open()]
+			onClick[ | IrAPantallaAgregarLaberinto ]
 		]
 		new Button(botonera) => [
 			caption = "Quitar Laberinto"
-			onClick[|modelObject.quitarLaberinto()]
+			onClick[ | modelObject.quitarLaberinto() ]
 		]
 	}
 	
@@ -123,12 +126,30 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 	}
 	
 	
+	
 	def IrAPantallaAgregarAccion() {
 		if(this.modelObject.habitacionSeleccionada == null){
-			throw new AgregarAccionException("Debe seleccionar una habitacion para poder agregarle una accion")
+			throw new AgregarAccionException(GatoEncerradoCommons.AGREGAR_ACCION_EXCEPTION)
 		}
 		new AgregarAccionWindow(this, this.modelObject.habitacionSeleccionada,this.modelObject.laberintoSeleccionado).open
 	}
 
+
+	def IrAPantallaAgregarHabitacion() {
+		if(this.modelObject.laberintoSeleccionado == null){
+			throw new AgregarHabitacionException(GatoEncerradoCommons.AGREGAR_HABITACION_EXCEPTION)
+		}
+		new AgregarHabitacionWindow(this, this.modelObject.laberintoSeleccionado).open
+	}
+
+
+	def IrAPantallaAgregarLaberinto() {
+		new AgregarLaberintoWindow(this, this.modelObject.juego).open()
+	}
+
+	def String getNombreLaberintoSeleccionado(){
+			//	firePropertyChanged(this,"laberintos", laberintos)
+		return modelObject.laberintoSeleccionado.nombreLaberinto
+	}
 
 }

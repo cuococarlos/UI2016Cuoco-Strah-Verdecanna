@@ -6,6 +6,7 @@ import org.uqbar.commons.utils.Observable
 import org.uqbar.commons.model.UserException
 import static org.uqbar.commons.model.ObservableUtils.*
 import gatoEncerradoExceptions.NombreYaExistenteException
+import commons.GatoEncerradoCommons
 
 @Accessors
 @Observable
@@ -22,7 +23,7 @@ class BibliotecaDeJuego {
 
 	def void crearYAgregarLaberinto(String nombre) {
 		if (laberintos.exists[it.nombreLaberinto == nombre]) {
-			throw new NombreYaExistenteException('''Ya existe el laberinto con nombre «nombre»''')
+			throw new NombreYaExistenteException(GatoEncerradoCommons.NOMBRE_LABERINTO_EXISTENTE_EXCEPTION + '''«nombre»''')
 		}
 		var Laberinto nuevoLaberinto = new Laberinto(nombre)
 		laberintos.add(nuevoLaberinto)
