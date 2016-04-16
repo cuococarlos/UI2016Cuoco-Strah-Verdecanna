@@ -43,7 +43,7 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		panelDeHabitaciones.layout = new VerticalLayout
 		panelDeHabitaciones.width = 100
 		//aca tengo que setear por defecto siempre el primer valor de la lista para que tome el nombre del laberinto
-		new Label(panelDeHabitaciones).text = "Habitaciones de:  " + getNombreLaberintoSeleccionado()  
+		new Label(panelDeHabitaciones).text = "Habitaciones de:  " //+ getNombreLaberintoSeleccionado()  
 
 		new List(panelDeHabitaciones) => [
 			(items <=> "laberintoSeleccionado.habitacionesQueLaComponen").adapter = new PropertyAdapter(Habitacion, "nombreHabitacion")
@@ -146,6 +146,9 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 	def IrAPantallaAgregarLaberinto() {
 		new AgregarLaberintoWindow(this, this.modelObject.juego).open()
 	}
+
+
+// este metodo no se usa, ver  	firePropertyChanged(this,"laberintos", laberintos)  de   BibliotecaDeJuego
 
 	def String getNombreLaberintoSeleccionado(){
 			//	firePropertyChanged(this,"laberintos", laberintos)

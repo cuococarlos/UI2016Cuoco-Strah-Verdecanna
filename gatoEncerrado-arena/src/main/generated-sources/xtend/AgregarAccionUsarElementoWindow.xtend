@@ -25,7 +25,7 @@ class AgregarAccionUsarElementoWindow extends SimpleWindow<AgregarAccionUsarElem
 		new Label(mainPanel).text = "Seleccione el Elemento que puede ser usado"
 		new Selector<Item>(mainPanel) => [
 			allowNull(false)
-			
+			//items <=> "laberinto.todosLosItems" para terminar maniana
 		] 
 		
 		new Label(mainPanel).text = "Cree la Accion a realizar"

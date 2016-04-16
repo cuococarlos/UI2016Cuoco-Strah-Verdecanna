@@ -1,4 +1,5 @@
-import dominioElementosDeljuego.Accion;
+import dominioElementosDeljuego.Habitacion;
+import dominioElementosDeljuego.Laberinto;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.uqbar.arena.layout.ColumnLayout;
@@ -9,9 +10,9 @@ import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.lacar.ui.model.Action;
 
 @SuppressWarnings("all")
-public class AgregarAccionWindow extends SimpleWindow<Accion> {
-  public AgregarAccionWindow(final WindowOwner parent, final Accion accion) {
-    super(parent, accion);
+public class AgregarAccionWindow extends SimpleWindow<AgregarAccionAppModel> {
+  public AgregarAccionWindow(final WindowOwner parent, final Habitacion hab, final Laberinto lab) {
+    super(parent, new AgregarAccionAppModel(lab, hab));
     this.setTitle("Agregar Acción");
     this.setTaskDescription("Seleccionar una acción a agregar");
   }
@@ -68,14 +69,23 @@ public class AgregarAccionWindow extends SimpleWindow<Accion> {
   }
   
   public void IrAPantallaAgregarAccionIrAOtraHabitacion() {
-    throw new UnsupportedOperationException("TODO: Ir a la pantalla de ir a otra habitación");
+    AgregarAccionAppModel _modelObject = this.getModelObject();
+    AgregarAccionAppModel _modelObject_1 = this.getModelObject();
+    AgregarAccionIrAOtraHabitacionWindow _agregarAccionIrAOtraHabitacionWindow = new AgregarAccionIrAOtraHabitacionWindow(this, _modelObject.habitacionActual, _modelObject_1.laberintoActual);
+    _agregarAccionIrAOtraHabitacionWindow.open();
   }
   
   public void IrAPantallaAgregarAccionAgarrarUnElemento() {
-    throw new UnsupportedOperationException("TODO: Ir a la pantalla de agarrar un elemento");
+    AgregarAccionAppModel _modelObject = this.getModelObject();
+    AgregarAccionAppModel _modelObject_1 = this.getModelObject();
+    AgregarAccionAgarrarElementoWindow _agregarAccionAgarrarElementoWindow = new AgregarAccionAgarrarElementoWindow(this, _modelObject.habitacionActual, _modelObject_1.laberintoActual);
+    _agregarAccionAgarrarElementoWindow.open();
   }
   
   public void IrAPantallaAgregarAccionUsarUnElemento() {
-    throw new UnsupportedOperationException("TODO: Ir a la pantalla de usar un elemento");
+    AgregarAccionAppModel _modelObject = this.getModelObject();
+    AgregarAccionAppModel _modelObject_1 = this.getModelObject();
+    AgregarAccionUsarElementoWindow _agregarAccionUsarElementoWindow = new AgregarAccionUsarElementoWindow(this, _modelObject.habitacionActual, _modelObject_1.laberintoActual);
+    _agregarAccionUsarElementoWindow.open();
   }
 }

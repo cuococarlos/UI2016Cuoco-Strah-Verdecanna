@@ -21,15 +21,13 @@ class AgregarAccionAgarrarElementoAppModel extends AgregarAccionAppModel{
 		this.habitacionActual = habitacion
 		this.laberintoActual = laberinto
 		itemParaAgregar = new Item
-		accionActual = new AccionAgarrarUnElemento
+		accionActual = new AccionAgarrarUnElemento(itemParaAgregar)
 ///  		
 	}
 	
 	
 	def void crearYAgregarAccionDeAgarrarElemento(){
 		accionActual.asignarAHabitacion(habitacionActual)
-		habitacionActual.agregarAccion(accionActual)
-		habitacionActual.agregarElementoALaHabitacion(itemParaAgregar)
 	}
 	
 	

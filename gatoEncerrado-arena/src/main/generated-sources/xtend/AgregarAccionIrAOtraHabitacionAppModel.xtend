@@ -11,17 +11,14 @@ import gatoEncerradoExceptions.AgregarAccionException
 @Observable
 
 class AgregarAccionIrAOtraHabitacionAppModel extends AgregarAccionAppModel{
-//	Habitacion habitacionActual
-//	Habitacion habitacionDestino
-//	AccionIrAOtraHabitacion accionActual
-//	Laberinto laberintoActual
+
 
 	
 //esta habitacion y laberinto que recibo por parametro es la habitacionSeleccionada de la clase BibliotecaDeJuegoAppModel
 	new(Habitacion hab,Laberinto lab){
 		this.habitacionActual = hab
 		this.laberintoActual=lab
-		accionActual = new AccionIrAOtraHabitacion
+		accionActual = new AccionIrAOtraHabitacion(habitacionDestino)
 	}
 
 	
@@ -29,10 +26,8 @@ class AgregarAccionIrAOtraHabitacionAppModel extends AgregarAccionAppModel{
 	def void crearYAgregarAccionDeIrOtraHabitacion(){	
 		if (habitacionActual == null) {
 			throw new AgregarAccionException("Debe seleccionar una habitacion para poder agregarle una accion")
-		}
-		habitacionActual.agregarAccion(accionActual)	
-		accionActual.asignarHabitacionDestino(habitacionDestino)
-		
+		}	
+		accionActual.asignarAHabitacion(habitacionActual)	
 	}
 		
 		

@@ -11,14 +11,13 @@ class AgregarAccionUsarElementoAppModel extends AgregarAccionAppModel{
 	new(Habitacion hab,Laberinto lab){
 		this.habitacionActual = hab
 		this.laberintoActual=lab
-		accionActual = new AccionUsarUnElemento
+		accionActual = new AccionUsarUnElemento()
 	}
 
 	
 	
 	def void crearYAgregarAccionDeUsarUnElemento(){		
 		accionActual.asignarAHabitacion(habitacionActual)
-		habitacionActual.agregarAccion(accionActual)
 		// agregar el elemento
 		
 	}

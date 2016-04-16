@@ -1,9 +1,11 @@
 package dominioElementosDeljuego
 
+
 abstract class Accion implements ElementosJuego {
 	
 	protected Habitacion habitacionDestino
 	//protected Habitacion habitacionSel
+	
 	
 	def void realizarAccion(Jugador j)
 	

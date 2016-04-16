@@ -1,19 +1,29 @@
+import dominioElementosDeljuego.Habitacion;
 import dominioElementosDeljuego.Laberinto;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.uqbar.arena.bindings.ObservableItems;
+import org.uqbar.arena.bindings.ObservableValue;
+import org.uqbar.arena.bindings.PropertyAdapter;
 import org.uqbar.arena.layout.ColumnLayout;
 import org.uqbar.arena.widgets.Button;
+import org.uqbar.arena.widgets.Control;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.Selector;
 import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
+import org.uqbar.arena.xtend.ArenaXtendExtensions;
 import org.uqbar.lacar.ui.model.Action;
+import org.uqbar.lacar.ui.model.ControlBuilder;
+import org.uqbar.lacar.ui.model.ListBuilder;
+import org.uqbar.lacar.ui.model.bindings.Binding;
 
 @SuppressWarnings("all")
-public class AgregarAccionIrAOtraHabitacionWindow extends SimpleWindow<Laberinto> {
-  public AgregarAccionIrAOtraHabitacionWindow(final WindowOwner parent, final Laberinto laberinto) {
-    super(parent, laberinto);
+public class AgregarAccionIrAOtraHabitacionWindow extends SimpleWindow<AgregarAccionIrAOtraHabitacionAppModel> {
+  public AgregarAccionIrAOtraHabitacionWindow(final WindowOwner owner, final Habitacion hab, final Laberinto lab) {
+    super(owner, new AgregarAccionIrAOtraHabitacionAppModel(hab, lab));
+    this.setTitle("Agregar Habitacion");
   }
   
   protected void createFormPanel(final Panel mainPanel) {
@@ -22,14 +32,19 @@ public class AgregarAccionIrAOtraHabitacionWindow extends SimpleWindow<Laberinto
     editorPanel.setLayout(_columnLayout);
     Label _label = new Label(editorPanel);
     _label.setText("Habitacion");
-    Selector<Object> _selector = new Selector<Object>(editorPanel);
-    final Procedure1<Selector<Object>> _function = new Procedure1<Selector<Object>>() {
-      public void apply(final Selector<Object> it) {
+    Selector<Habitacion> _selector = new Selector<Habitacion>(editorPanel);
+    final Procedure1<Selector<Habitacion>> _function = new Procedure1<Selector<Habitacion>>() {
+      public void apply(final Selector<Habitacion> it) {
         it.allowNull(false);
-        it.setWidth(100);
+        ObservableValue<Control, ControlBuilder> _value = it.<ControlBuilder>value();
+        ArenaXtendExtensions.operator_spaceship(_value, "habitacionDestino");
+        ObservableItems<Selector<Habitacion>, Habitacion, ListBuilder<Habitacion>> _items = it.items();
+        Binding _spaceship = ArenaXtendExtensions.operator_spaceship(_items, "laberintoActual.habitaciones");
+        PropertyAdapter _propertyAdapter = new PropertyAdapter(Habitacion.class, "nombreHabitacion");
+        _spaceship.setAdapter(_propertyAdapter);
       }
     };
-    ObjectExtensions.<Selector<Object>>operator_doubleArrow(_selector, _function);
+    ObjectExtensions.<Selector<Habitacion>>operator_doubleArrow(_selector, _function);
   }
   
   protected void addActions(final Panel actionsPanel) {
@@ -40,7 +55,7 @@ public class AgregarAccionIrAOtraHabitacionWindow extends SimpleWindow<Laberinto
         it.setAsDefault();
         final Action _function = new Action() {
           public void execute() {
-            AgregarAccionIrAOtraHabitacionWindow.this.volver();
+            AgregarAccionIrAOtraHabitacionWindow.this.close();
           }
         };
         it.onClick(_function);
@@ -54,20 +69,14 @@ public class AgregarAccionIrAOtraHabitacionWindow extends SimpleWindow<Laberinto
         it.setAsDefault();
         final Action _function = new Action() {
           public void execute() {
-            AgregarAccionIrAOtraHabitacionWindow.this.agregarYVolver();
+            AgregarAccionIrAOtraHabitacionAppModel _modelObject = AgregarAccionIrAOtraHabitacionWindow.this.getModelObject();
+            _modelObject.crearYAgregarAccionDeIrOtraHabitacion();
+            AgregarAccionIrAOtraHabitacionWindow.this.close();
           }
         };
         it.onClick(_function);
       }
     };
     ObjectExtensions.<Button>operator_doubleArrow(_button_1, _function_1);
-  }
-  
-  public void volver() {
-    throw new UnsupportedOperationException("TODO: auto-generated method stub");
-  }
-  
-  public void agregarYVolver() {
-    throw new UnsupportedOperationException("TODO: auto-generated method stub");
   }
 }
