@@ -56,8 +56,9 @@ class Laberinto {
 		this.habitacionALaCualIr = valor;
 	}
 
-	def void agregarHabitacion(Habitacion habitacion) {
-		this.habitacionesQueLaComponen.add(habitacion)
+	def void agregarHabitacion(String nombreHabitacion) {
+		var Habitacion nuevaHabitacion = new Habitacion(nombreHabitacion)
+		this.habitacionesQueLaComponen.add(nuevaHabitacion)
 	}
 	
 	def quitarHabitacion(Habitacion habitacion) {

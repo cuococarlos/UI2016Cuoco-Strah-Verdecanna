@@ -37,11 +37,12 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 	def habitacionesDelLaberinto(Panel panel) {
 		var panelDeHabitaciones = new Panel(panel)
 		panelDeHabitaciones.layout = new VerticalLayout
+		panelDeHabitaciones.width = 100
 		//aca tengo que setear por defecto siempre el primer valor de la lista para que tome el nombre del laberinto
 		new Label(panelDeHabitaciones).text = "Habitaciones de : " //+ modelObject.laberintoSeleccionado.nombreLaberinto //'''Habitaciones de «nombre»''' //
 
 		new List(panelDeHabitaciones) => [
-			(items <=> "laberintoSeleccionado.habitaciones").adapter = new PropertyAdapter(Habitacion, "nombre")
+			(items <=> "laberintoSeleccionado.habitacionesQueLaComponen").adapter = new PropertyAdapter(Habitacion, "nombreHabitacion")
 			value <=> "habitacionSeleccionada"
 		]
 

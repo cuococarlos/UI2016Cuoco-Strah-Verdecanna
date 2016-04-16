@@ -21,18 +21,18 @@ class AgregarHabitacionWindow extends SimpleWindow<AgregarHabitacionAppModel> {
 	override protected createFormPanel(Panel mainPanel) {
 		new Label(mainPanel).text = "Escriba el Nombre de la Habitacion a crear"
 		new TextBox(mainPanel) => [
-			value <=> "habitacionActual.nombre"
+			value <=> "nombreHabitacion"
 		]
 		val botonera = new Panel(mainPanel)
 		botonera.layout = new HorizontalLayout
 		new Button(botonera) => [
 			caption = "Crear Habitacion"
+			setAsDefault()
 			onClick [|
 				modelObject.crearYAgregarHabitacion
 				this.close
-			//	mainPanel.
 			]
-			setAsDefault()
+			//setAsDefault()
 			//onClick [|modelObject.crearYAgregarHabitacion]
 		]
 

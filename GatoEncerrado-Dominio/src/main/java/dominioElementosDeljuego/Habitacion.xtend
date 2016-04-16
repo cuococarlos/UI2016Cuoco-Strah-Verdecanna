@@ -5,30 +5,40 @@ import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
 
-@Accessors
 @Observable
+@Accessors
 class Habitacion {
-	var String nombre
-	var List<Item> itemsHabitacion
-	var List<Accion> acciones 
-	var List <Habitacion> habitaciones 
-	var Boolean isHabitacionFinal
-	var Boolean isHabitacionInicial
 	
+	 String nombreLaberinto
+	 List<Item> itemsHabitacion
+	 List<Accion> acciones 
+	 List <Habitacion> habitaciones 
+	 Boolean isHabitacionFinal
+	 Boolean isHabitacionInicial
+	
+	String nombreHabitacion
+	
+	
+	new(String nombre) {
+		this()
+		nombreHabitacion = nombre
+	}
 
-	new(String name){		
-		nombre = name
+	new(){
 		itemsHabitacion = new ArrayList<Item>
 		acciones = new ArrayList <Accion>
 		habitaciones = new ArrayList <Habitacion>
 		isHabitacionFinal=false
 		isHabitacionInicial=false
-	}
-	
-	new(){
-		
 //Ojo esto es un parche horrible no deberia estar ,miremolo es para que no rompa la vista		
 	}
+	
+	def crearHabitacion(String nombreHabitacion) {
+		val habitacion = new Habitacion
+		habitacion.nombreHabitacion = nombreHabitacion
+		return nombreHabitacion
+	}
+	
 	
 	/////////////////////////metodos///////////////////////////////
 	//validacion para ver si la habitacion ya contiene ese Item
@@ -54,7 +64,7 @@ class Habitacion {
 	
 	
 	def agregarAccion(Accion accion){		
-		accion.asignarAHabitacion(this)
+		acciones.add(accion)
 	}
 
 
