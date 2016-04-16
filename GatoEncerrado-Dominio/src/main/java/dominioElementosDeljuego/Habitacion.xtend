@@ -71,8 +71,6 @@ class Habitacion {
 	def agregarElementoALaHabitacion(Item item) {
 		//if (!existeItem) {
 			itemsHabitacion.add(item)
-			itemsHabitacion.forEach[i|println(i.nombre)]
-			println(itemsHabitacion)
 		//mostrar la lista de elementos actuales	
 //		}else{
 //			throw new Exception("El Item ya existe en esa habitacion")

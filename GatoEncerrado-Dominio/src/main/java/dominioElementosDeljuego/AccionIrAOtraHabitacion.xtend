@@ -5,7 +5,8 @@ class AccionIrAOtraHabitacion extends Accion{
 	//Habitacion nueva
 	
 	
-	new() {	
+	new(Habitacion hab) {
+		habitacionDestino=hab	
 	}
 	
 	
@@ -15,14 +16,11 @@ class AccionIrAOtraHabitacion extends Accion{
 	
 	
 	override void asignarAHabitacion(Habitacion habitacion){
-		habitacion.agregarAccion(this)			
-	}
-	
-	
+		habitacion.agregarAccion(this)				
 	
 //	override void asignarHabitacionDestino(Habitacion h){
 //			nueva=h
-//	}
+	}
 		
 
 	}

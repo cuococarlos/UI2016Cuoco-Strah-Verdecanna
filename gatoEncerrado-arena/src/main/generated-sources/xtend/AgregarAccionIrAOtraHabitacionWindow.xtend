@@ -27,7 +27,7 @@ class AgregarAccionIrAOtraHabitacionWindow extends SimpleWindow<AgregarAccionIrA
 			allowNull (false)
 //		  hay que ver como funciona el tema de las listas
 			value <=> "habitacionDestino"
-			(items <=> "laberintoActual.habitaciones").adapter = new PropertyAdapter(Habitacion, "nombre")
+			(items <=> "laberintoActual.habitaciones").adapter = new PropertyAdapter(Habitacion, "nombreHabitacion")
 		]
 					
 	}

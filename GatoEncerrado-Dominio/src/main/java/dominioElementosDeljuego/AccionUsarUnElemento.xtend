@@ -22,8 +22,7 @@ class AccionUsarUnElemento extends Accion{
 
 	override void asignarAHabitacion(Habitacion habitacion){
 		habitacion.agregarElementoALaHabitacion(item)
-	    // super.asignarAHabitacion(habitacion)
+	     super.asignarAHabitacion(habitacion)
+	
 	}
-	
-	
 }
