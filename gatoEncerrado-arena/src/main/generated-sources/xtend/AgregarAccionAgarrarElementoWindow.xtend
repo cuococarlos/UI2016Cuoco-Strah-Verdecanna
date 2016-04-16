@@ -7,6 +7,8 @@ import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.widgets.Button
+import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+
 
 class AgregarAccionAgarrarElementoWindow extends SimpleWindow<AgregarAccionAgarrarElementoAppModel>{
 	
@@ -21,7 +23,7 @@ class AgregarAccionAgarrarElementoWindow extends SimpleWindow<AgregarAccionAgarr
 		this.title = "Agregara Accion de Agarrar un Elemento"		
 		new Label(mainPanel).text = "Escriba el Elemento que aparecerá en la habitación"
 		new TextBox(mainPanel) => [
-		//	value <=> "itemParaAgregar.nombre"
+			value <=> "itemParaAgregar.nombre"
 		]
 		var botonera = new Panel(mainPanel)
 		botonera.layout = new HorizontalLayout

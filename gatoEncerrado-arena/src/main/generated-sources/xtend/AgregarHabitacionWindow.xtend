@@ -23,16 +23,17 @@ class AgregarHabitacionWindow extends SimpleWindow<AgregarHabitacionAppModel> {
 		new TextBox(mainPanel) => [
 			value <=> "habitacionActual.nombre"
 		]
-		var botonera = new Panel(mainPanel)
+		val botonera = new Panel(mainPanel)
 		botonera.layout = new HorizontalLayout
 		new Button(botonera) => [
 			caption = "Crear Habitacion"
 			onClick [|
 				modelObject.crearYAgregarHabitacion
 				this.close
+			//	mainPanel.
 			]
-	//		setAsDefault()
-	//		onClick [|modelObject.crearYAgregarHabitacion]
+			setAsDefault()
+			//onClick [|modelObject.crearYAgregarHabitacion]
 		]
 
 		new Button(botonera) => [
