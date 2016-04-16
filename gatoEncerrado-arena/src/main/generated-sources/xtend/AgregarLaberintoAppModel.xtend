@@ -1,5 +1,7 @@
 import dominioElementosDeljuego.BibliotecaDeJuego
 import org.uqbar.commons.utils.Observable
+import gatoEncerradoExceptions.AgregarLaberintoException
+import commons.GatoEncerradoCommons
 
 @Observable
 class AgregarLaberintoAppModel {
@@ -19,6 +21,9 @@ class AgregarLaberintoAppModel {
 	}
 	
 	def void crearLaberinto(){
+		if(nombreLaberinto == null){
+			throw new AgregarLaberintoException(GatoEncerradoCommons.NOMBRE_LABERINTO_VACIO_EXCEPTION)
+		}
 		juego.crearYAgregarLaberinto(nombreLaberinto)
 	}
 	

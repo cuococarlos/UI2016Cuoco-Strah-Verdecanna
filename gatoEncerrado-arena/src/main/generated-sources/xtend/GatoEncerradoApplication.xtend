@@ -1,7 +1,5 @@
-import dominioElementosDeljuego.Laberinto
-import org.uqbar.arena.Application
-import dominioElementosDeljuego.AccionIrAOtraHabitacion
 import dominioElementosDeljuego.BibliotecaDeJuego
+import org.uqbar.arena.Application
 
 class GatoEncerradoApplication extends Application{
 	

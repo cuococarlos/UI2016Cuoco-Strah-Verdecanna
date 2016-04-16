@@ -29,6 +29,7 @@ class AgregarAccionIrAOtraHabitacionAppModel extends AgregarAccionAppModel{
 			throw new AgregarAccionException(GatoEncerradoCommons.AGREGAR_ACCION_EXCEPTION)
 		}	
 		accionActual.asignarAHabitacion(habitacionActual)	
+		
 	}
 		
 		

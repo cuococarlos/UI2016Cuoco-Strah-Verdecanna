@@ -14,6 +14,8 @@ class AgregarAccionAppModel {
 	protected Accion accionActual
 	protected Laberinto laberintoActual
 	
+//	protected String nombreHabitacion
+//	protected String itemHabitacion
 	
 	
 	new(){}

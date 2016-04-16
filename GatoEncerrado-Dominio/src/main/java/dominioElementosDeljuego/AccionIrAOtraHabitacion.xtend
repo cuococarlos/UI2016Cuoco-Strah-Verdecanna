@@ -3,7 +3,8 @@ package dominioElementosDeljuego
 class AccionIrAOtraHabitacion extends Accion{
 	
 	//Habitacion nueva
-	
+	String nombreAccion
+	String nombreItem
 	
 	new(Habitacion hab) {
 		habitacionDestino=hab	

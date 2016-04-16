@@ -33,6 +33,9 @@ class AgregarHabitacionAppModel {
 		if (laberintoActual == null) {
 			throw new AgregarHabitacionException(GatoEncerradoCommons.AGREGAR_HABITACION_EXCEPTION)
 		}
+		if(nombreHabitacion == null){
+			throw new AgregarHabitacionException(GatoEncerradoCommons.NOMBRE_HABITACION_VACIA_EXCEPTION)
+		}
 		laberintoActual.agregarHabitacion(nombreHabitacion)
 	}
 			
