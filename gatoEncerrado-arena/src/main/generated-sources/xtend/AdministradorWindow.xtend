@@ -149,7 +149,6 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 
 
 // este metodo no se usa, ver  	firePropertyChanged(this,"laberintos", laberintos)  de   BibliotecaDeJuego
-
 	def String getNombreLaberintoSeleccionado(){
 			//	firePropertyChanged(this,"laberintos", laberintos)
 		return modelObject.laberintoSeleccionado.nombreLaberinto
