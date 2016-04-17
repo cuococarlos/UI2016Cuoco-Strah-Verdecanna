@@ -9,6 +9,10 @@ class AccionAgarrarUnElemento extends Accion{
 	
 	var Item item
 	var Habitacion hab
+	
+//	String nombreAccion     //Ojo que es un parche, mejorar si es posible	
+
+	val PREFIJO_AGARRAR = "Agarrar - "
 		
 	new(){}
 		
@@ -16,8 +20,9 @@ class AccionAgarrarUnElemento extends Accion{
 		this.hab = h
 	}	
 		
-	new(Item i){
-		item = i	
+	new(Item nuevoItem){
+		item = nuevoItem
+		this.nombreAccion = PREFIJO_AGARRAR + item.nombre
 	}
 		
 	
@@ -28,7 +33,7 @@ class AccionAgarrarUnElemento extends Accion{
 
 	override void asignarAHabitacion(Habitacion habitacion){
 		habitacion.agregarElementoALaHabitacion(item)
-	     super.asignarAHabitacion(habitacion)
+	    super.asignarAHabitacion(habitacion)
 	}
 	
 	

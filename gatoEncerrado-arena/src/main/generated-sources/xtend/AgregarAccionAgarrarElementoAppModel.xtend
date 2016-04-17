@@ -22,7 +22,7 @@ class AgregarAccionAgarrarElementoAppModel extends AgregarAccionAppModel{
 		this.laberintoActual = laberinto
 		itemParaAgregar = new Item
 		accionActual = new AccionAgarrarUnElemento(itemParaAgregar)
-///  		
+		accionActual.asignarHabitacionDestino(habitacionActual)
 	}
 	
 	

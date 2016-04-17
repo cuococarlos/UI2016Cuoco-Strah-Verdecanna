@@ -31,12 +31,9 @@ class Laberinto {
 	def crearLaberinto(String lab) {
 		val laberinto = new Laberinto
 		laberinto.nombreLaberinto = lab
-
 		return lab
 	}
 
-	def Habitacion comienzoLaberinto() {
-	}
 
 	def cambiarHabitacionDeJuego(Habitacion habitacion) {
 		actualDeJuego = habitacion
@@ -78,12 +75,18 @@ class Laberinto {
 
 	def List<Item> todosLosItems(){
 	  //  this.habitacionesQueLaComponen.for[h| h.itemsHabitacion.] .Mensaje que se traiga la colecicon de todos los items
-	 
+	  	val allItems = new ArrayList<Item>
+	    this.habitacionesQueLaComponen.forEach[hab| allItems.addAll(hab.itemsHabitacion)]  //Mirar como hacerlo con fold o collect,algo mas performante
+	    allItems	 
 	}
 	
 	def String getNombreLaberinto(){
 		return this.nombreLaberinto
 	}
+
+	def Habitacion comienzoLaberinto() {
+	}
+
 
 
 }

@@ -1,12 +1,14 @@
 package dominioElementosDeljuego
 
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 abstract class Accion implements ElementosJuego {
 	
 	protected Habitacion habitacionDestino
 	//protected Habitacion habitacionSel
 	protected String nombreAccion
-	protected String nombreItem
+		
 	
 	def void realizarAccion(Jugador j)
 	

@@ -17,6 +17,7 @@ import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import dominioElementosDeljuego.Accion
 
 class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 
@@ -27,6 +28,7 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 	override protected addActions(Panel actionsPanel) {
 	}
 
+
 // Panel principal
 	override protected createFormPanel(Panel mainPanel) {
 		this.title = "Aca Hay Gato Encerrado..."
@@ -36,6 +38,7 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		habitacionesDelLaberinto(todo)
 		acciones(todo)
 	}
+	
 // -- INICIO --  Panel de Habitaciones   
 	def habitacionesDelLaberinto(Panel panel) {
 		var panelDeHabitaciones = new Panel(panel)
@@ -59,12 +62,12 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		
 		new Button(botoneraAddLaberintos) => [
 			caption = "Agregar Habitacion"
-			onClick[|IrAPantallaAgregarHabitacion]
+			onClick[| IrAPantallaAgregarHabitacion ]
 		]
 		new Button(botoneraAddLaberintos) => [
 			caption = "Quitar Habitacion"
 			bindEnabled(new NotNullObservable("habitacionSeleccionada"))
-			onClick [|modelObject.quitarHabitacion()]
+			onClick [| modelObject.quitarHabitacion() ]
 		]
 	}
 // -- FIN --  Panel de Habitaciones
@@ -88,16 +91,15 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		
 		new Button(botonera) => [
 			caption = "Agregar Laberinto"
-			//aca navego hasta 
-			onClick[|IrAPantallaAgregarLaberinto]
+			onClick[| IrAPantallaAgregarLaberinto ]
 		]
+		
 		new Button(botonera) => [
 			caption = "Quitar Laberinto"
 			bindEnabled(new NotNullObservable("laberintoSeleccionado"))
 			onClick[|modelObject.quitarLaberinto()]
 		]
-	}
-	
+	}	
 // -- FIN --  Panel de Laberintos	
 	
 	
@@ -129,7 +131,7 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		new Label(panelListadoAccionesHabitacion).text = "Acciones"
 
 		new List(panelListadoAccionesHabitacion)=> [
-			items <=> "habitacionSeleccionada.acciones"
+			(items <=> "habitacionSeleccionada.acciones").adapter = new PropertyAdapter(Accion, "nombreAccion")
 			width = 160
 			height = 90
 		]
@@ -137,9 +139,9 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 	 	var botoneraAcciones = new Panel(panelAcciones)
 	 	botoneraAcciones.layout = new HorizontalLayout
 	 	
-	 	new Button(botoneraAcciones)=> [
+	 	new Button(botoneraAcciones) => [
 	 		caption = "Agregar Accion"
-	 			onClick[|IrAPantallaAgregarAccion]
+	 			onClick[| IrAPantallaAgregarAccion ]
 		]	 	
 	 	new Button(botoneraAcciones)=> [
 	 		caption = "Quitar Accion"
@@ -154,8 +156,7 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		if (this.modelObject.habitacionSeleccionada == null) {
 			throw new AgregarAccionException(GatoEncerradoCommons.AGREGAR_ACCION_EXCEPTION)
 		}
-		new AgregarAccionWindow(this, this.modelObject.habitacionSeleccionada, this.modelObject.laberintoSeleccionado).
-			open
+		new AgregarAccionWindow(this, this.modelObject.habitacionSeleccionada, this.modelObject.laberintoSeleccionado).open
 	}
 
 	def IrAPantallaAgregarHabitacion() {
