@@ -58,14 +58,14 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 			height = 100
 		]
 
-		var botoneraAddLaberintos = new Panel(panelDeHabitaciones)
-		botoneraAddLaberintos.layout = new HorizontalLayout
+		var botonera = new Panel(panelDeHabitaciones)
+		botonera.layout = new HorizontalLayout
 		
-		new Button(botoneraAddLaberintos) => [
+		new Button(botonera) => [
 			caption = "Agregar Habitacion"
 			onClick[| IrAPantallaAgregarHabitacion ]
 		]
-		new Button(botoneraAddLaberintos) => [
+		new Button(botonera) => [
 			caption = "Quitar Habitacion"
 			bindEnabled(new NotNullObservable("habitacionSeleccionada"))
 			onClick [| modelObject.quitarHabitacion() ]
@@ -78,7 +78,7 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 	def laberintos(Panel mainPanel) {
 		var panelLaberintos = new Panel(mainPanel)
 		panelLaberintos.width = 300 minHeight = 250
-		new Label(panelLaberintos).text = "Laberintos"
+		new Label(panelLaberintos).text = "Laberintos:"
 		new Label(panelLaberintos).text =  ""
 		new List(panelLaberintos) => [
 			(items <=> "juego.laberintos").adapter = new PropertyAdapter(Laberinto, "nombreLaberinto")
