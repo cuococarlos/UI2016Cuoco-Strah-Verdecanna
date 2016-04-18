@@ -1,4 +1,4 @@
-
+package appModels
 
 import dominioElementosDeljuego.Habitacion
 import dominioElementosDeljuego.AccionIrAOtraHabitacion

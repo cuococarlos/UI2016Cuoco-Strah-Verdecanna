@@ -8,6 +8,7 @@ import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import appModels.AgregarHabitacionAppModel
 
 class AgregarHabitacionWindow extends SimpleWindow<AgregarHabitacionAppModel> {
 

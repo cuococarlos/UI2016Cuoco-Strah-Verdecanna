@@ -1,4 +1,5 @@
-import dominioElementosDeljuego.Administrador
+import appModels.AgregarLaberintoAppModel
+import dominioElementosDeljuego.BibliotecaDeJuego
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
@@ -8,7 +9,6 @@ import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
-import dominioElementosDeljuego.BibliotecaDeJuego
 
 class AgregarLaberintoWindow extends SimpleWindow<AgregarLaberintoAppModel>{
 	//aca necesito que reciba por parametro una BibliotecaDeJuego porque la clase AgregarLaberintoAppModel necesita de ese laberinto

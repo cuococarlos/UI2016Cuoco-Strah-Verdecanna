@@ -1,3 +1,5 @@
+package appModels
+
 import dominioElementosDeljuego.AccionAgarrarUnElemento
 import dominioElementosDeljuego.Habitacion
 import dominioElementosDeljuego.Item
@@ -7,23 +9,20 @@ import org.uqbar.commons.utils.Observable
 
 @Accessors
 @Observable
-class AgregarAccionAgarrarElementoAppModel extends AgregarAccionAppModel{
-	
-	protected Item itemParaAgregar
-	
+class AgregarAccionAgarrarElementoAppModel extends AgregarAccionAppModel {
 
-	new(Habitacion habitacion, Laberinto laberinto){
+	protected Item itemParaAgregar
+
+	new(Habitacion habitacion, Laberinto laberinto) {
 		this.habitacionActual = habitacion
 		this.laberintoActual = laberinto
 		itemParaAgregar = new Item
 	}
-	
-	
-	def void crearYAgregarAccionDeAgarrarElemento(){
+
+	def void crearYAgregarAccionDeAgarrarElemento() {
 		accionActual = new AccionAgarrarUnElemento(itemParaAgregar)
 		accionActual.asignarHabitacionDestino(habitacionActual)
 		accionActual.asignarAHabitacion(habitacionActual)
 	}
-	
-	
+
 }

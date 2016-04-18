@@ -1,4 +1,6 @@
+import appModels.BibliotecaDeJuegoAppModel
 import commons.GatoEncerradoCommons
+import dominioElementosDeljuego.Accion
 import dominioElementosDeljuego.BibliotecaDeJuego
 import dominioElementosDeljuego.Habitacion
 import dominioElementosDeljuego.Laberinto
@@ -17,8 +19,6 @@ import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
-import dominioElementosDeljuego.Accion
-import dominioElementosDeljuego.AccionAgarrarUnElemento
 
 class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 
@@ -53,7 +53,8 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		new List(panelDeHabitaciones) => [
 			(items <=> "laberintoSeleccionado.habitacionesQueLaComponen").adapter = new PropertyAdapter(Habitacion,
 				"nombreHabitacion")
-			value <=> "habitacionSeleccionada"
+			//value <=> "habitacionSeleccionada"
+			value <=> "laberintoSeleccionado.actualDeJuego"
 			width = 200
 			height = 100
 		]
@@ -67,7 +68,7 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		]
 		new Button(botonera) => [
 			caption = "Quitar Habitacion"
-			bindEnabled(new NotNullObservable("habitacionSeleccionada"))
+			bindEnabled(new NotNullObservable("laberintoSeleccionado.actualDeJuego"))
 			onClick [| modelObject.quitarHabitacion() ]
 		]
 	}
@@ -116,7 +117,7 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		panelEsEstadoInicialHabitacion.layout = new HorizontalLayout
 		new Label(panelEsEstadoInicialHabitacion).text = "Es Inicial?"
 		new CheckBox(panelEsEstadoInicialHabitacion) => [
-			bindEnabled(new NotNullObservable("habitacionSeleccionada"))
+			bindEnabled(new NotNullObservable("laberintoSeleccionado.actualDeJuego"))
 			value <=> "habitacionSeleccionada.isHabitacionInicial"
 		]
 
@@ -124,7 +125,7 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		panelEsEstadoFinalHabitacion.layout = new HorizontalLayout
 		new Label(panelEsEstadoFinalHabitacion).text = "Es Final?"
 		new CheckBox(panelEsEstadoFinalHabitacion) => [
-			bindEnabled(new NotNullObservable("habitacionSeleccionada"))
+			bindEnabled(new NotNullObservable("laberintoSeleccionado.actualDeJuego"))
 			value <=> "habitacionSeleccionada.isHabitacionFinal"
 		]
 

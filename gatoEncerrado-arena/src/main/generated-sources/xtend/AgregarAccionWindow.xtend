@@ -1,11 +1,11 @@
-import dominioElementosDeljuego.Accion
+import appModels.AgregarAccionAppModel
+import dominioElementosDeljuego.Habitacion
+import dominioElementosDeljuego.Laberinto
 import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
-import dominioElementosDeljuego.Habitacion
-import dominioElementosDeljuego.Laberinto
 
 class AgregarAccionWindow extends SimpleWindow<AgregarAccionAppModel>{
 	

@@ -1,9 +1,10 @@
+package appModels
+
+import dominioElementosDeljuego.Accion
+import dominioElementosDeljuego.Habitacion
+import dominioElementosDeljuego.Laberinto
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
-import dominioElementosDeljuego.Laberinto
-import dominioElementosDeljuego.Habitacion
-import dominioElementosDeljuego.Accion
-import dominioElementosDeljuego.Item
 
 @Accessors
 @Observable

@@ -1,11 +1,12 @@
-import dominioElementosDeljuego.Habitacion
+package appModels
+
+import commons.GatoEncerradoCommons
 import dominioElementosDeljuego.Laberinto
+import gatoEncerradoExceptions.AgregarHabitacionException
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
-import org.uqbar.commons.model.UserException
-import gatoEncerradoExceptions.AgregarHabitacionException
-import commons.GatoEncerradoCommons
 
+@Accessors
 @Observable
 class AgregarHabitacionAppModel {
 

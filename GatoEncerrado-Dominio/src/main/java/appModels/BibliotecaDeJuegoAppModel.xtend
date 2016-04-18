@@ -1,12 +1,12 @@
+package appModels
 
-
+import dominioElementosDeljuego.Accion
 import dominioElementosDeljuego.BibliotecaDeJuego
+import dominioElementosDeljuego.Habitacion
 import dominioElementosDeljuego.Laberinto
+import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
-import java.util.List
-import dominioElementosDeljuego.Habitacion
-import dominioElementosDeljuego.Accion
 
 @Accessors
 @Observable
@@ -15,27 +15,35 @@ class BibliotecaDeJuegoAppModel {
 	Laberinto laberintoSeleccionado
 	Habitacion habitacionSeleccionada
 	Accion accionSeleccionada
-	
-	new(BibliotecaDeJuego juego){
+
+	new(BibliotecaDeJuego juego) {
 		this.juego = juego
 	}
-	
-	def List<Laberinto> getLaberintos(){
+
+	def List<Laberinto> getLaberintos() {
 		this.juego.laberintos
 	}
-	
-	def void quitarLaberinto(){
+
+	def void quitarLaberinto() {
 		juego.quitarLaberinto(laberintoSeleccionado)
-		//laberintoSeleccionado = new Laberinto
 	}
-	
+
 	def void quitarHabitacion() {
-		laberintoSeleccionado.quitarHabitacion(habitacionSeleccionada)
+
+		//laberintoSeleccionado.quitarHabitacion(habitacionSeleccionada)
+		if (laberintoSeleccionado.habitacionesQueLaComponen.size == 1) {
+			laberintoSeleccionado.quitarHabitacion(laberintoSeleccionado.actualDeJuego)
+			quitarLaberinto()
+		}
+		else{
+			laberintoSeleccionado.quitarHabitacion(laberintoSeleccionado.actualDeJuego)	
+		}
+		
 		//habitacionSeleccionada = new Habitacion // parche para evitar puntero a Null
 	}
-	
-	def hayHabitacion(){
+
+	def hayHabitacion() {
 		return habitacionSeleccionada != null
 	}
-	
+
 }

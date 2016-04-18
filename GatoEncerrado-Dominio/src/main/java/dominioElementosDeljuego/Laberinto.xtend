@@ -1,13 +1,13 @@
 package dominioElementosDeljuego
 
+import commons.GatoEncerradoCommons
+import gatoEncerradoExceptions.NombreYaExistenteException
 import java.util.ArrayList
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
+
 import static org.uqbar.commons.model.ObservableUtils.*
-import org.uqbar.commons.model.UserException
-import gatoEncerradoExceptions.NombreYaExistenteException
-import commons.GatoEncerradoCommons
 
 @Observable
 @Accessors

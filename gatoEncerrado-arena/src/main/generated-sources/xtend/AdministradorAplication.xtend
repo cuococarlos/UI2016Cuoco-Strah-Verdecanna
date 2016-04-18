@@ -1,7 +1,5 @@
 import dominioElementosDeljuego.BibliotecaDeJuego
-import dominioElementosDeljuego.Laberinto
 import org.uqbar.arena.Application
-import dominioElementosDeljuego.Habitacion
 
 class AdministradorAplication extends Application{
 	

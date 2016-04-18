@@ -1,27 +1,27 @@
 import dominioElementosDeljuego.Habitacion
 import dominioElementosDeljuego.Laberinto
-import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.layout.HorizontalLayout
+import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
-import org.uqbar.arena.layout.HorizontalLayout
-import org.uqbar.arena.widgets.Button
+
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import appModels.AgregarAccionAgarrarElementoAppModel
 
+class AgregarAccionAgarrarElementoWindow extends SimpleWindow<AgregarAccionAgarrarElementoAppModel> {
 
-class AgregarAccionAgarrarElementoWindow extends SimpleWindow<AgregarAccionAgarrarElementoAppModel>{
-	
-	new(WindowOwner owner, Habitacion hab,Laberinto lab) {
-		super(owner, new AgregarAccionAgarrarElementoAppModel(hab,lab))
+	new(WindowOwner owner, Habitacion hab, Laberinto lab) {
+		super(owner, new AgregarAccionAgarrarElementoAppModel(hab, lab))
 		title = "Agregar Accion de agarrar un elemento"
 		taskDescription = "Escriba el Elemento que aparecerá en la habitación"
 	}
 
-
 	override protected createFormPanel(Panel mainPanel) {
-//		this.title = "Agregar Accion de Agarrar un Elemento"		
-//		new Label(mainPanel).text = "Escriba el Elemento que aparecerá en la habitación"
+
+		//		this.title = "Agregar Accion de Agarrar un Elemento"		
+		//		new Label(mainPanel).text = "Escriba el Elemento que aparecerá en la habitación"
 		new TextBox(mainPanel) => [
 			value <=> "itemParaAgregar.nombre"
 		]
@@ -29,8 +29,10 @@ class AgregarAccionAgarrarElementoWindow extends SimpleWindow<AgregarAccionAgarr
 		botonera.layout = new HorizontalLayout
 		new Button(botonera) => [
 			caption = "Agregar"
-			onClick [| modelObject.crearYAgregarAccionDeAgarrarElemento()
-						this.close
+			onClick [|
+				modelObject.crearYAgregarAccionDeAgarrarElemento()
+				setAsDefault
+				this.close
 			]
 		]
 
@@ -39,11 +41,8 @@ class AgregarAccionAgarrarElementoWindow extends SimpleWindow<AgregarAccionAgarr
 			onClick[this.close]
 		]
 	}
-	
-	
+
 	override protected addActions(Panel actionsPanel) {
 	}
-	
-	
-	
+
 }
