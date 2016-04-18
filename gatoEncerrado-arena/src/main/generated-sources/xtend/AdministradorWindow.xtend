@@ -18,6 +18,7 @@ import org.uqbar.arena.windows.WindowOwner
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import dominioElementosDeljuego.Accion
+import dominioElementosDeljuego.AccionAgarrarUnElemento
 
 class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 

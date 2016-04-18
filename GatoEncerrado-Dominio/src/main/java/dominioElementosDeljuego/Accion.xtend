@@ -5,8 +5,9 @@ import org.eclipse.xtend.lib.annotations.Accessors
 @Accessors
 abstract class Accion implements ElementosJuego {
 	
+		//protected Habitacion habitacionSel
 	protected Habitacion habitacionDestino
-	//protected Habitacion habitacionSel
+	protected Item itemN
 	protected String nombreAccion
 		
 	

@@ -8,8 +8,8 @@ import org.uqbar.commons.utils.Observable
 @Observable
 class AccionUsarUnElemento extends Accion{
 	
-	var Item item
-//	String nombreAccion  //Ojo es un parche,buscar solucion mejor
+//	var Item item
+	String nombreAccion  //Ojo es un parche,buscar solucion mejor
 	
 	val PREFIJO_USAR = "Usar un - "
 	
@@ -17,8 +17,8 @@ class AccionUsarUnElemento extends Accion{
 	new(){}
 		
 	new(Item nuevoItem){
-		item = nuevoItem
-		this.nombreAccion = PREFIJO_USAR + item.nombre
+		itemN = nuevoItem
+		//this.nombreAccion = PREFIJO_USAR + item.nombre
 	}
 		
 	
@@ -28,9 +28,9 @@ class AccionUsarUnElemento extends Accion{
 
 
 	override void asignarAHabitacion(Habitacion habitacion){
-		habitacion.agregarElementoALaHabitacion(item)
-		//nombreAccion = "Usar un"+item.nombre mirar esto 17/04
-	    super.asignarAHabitacion(habitacion)	
+		habitacion.agregarElementoALaHabitacion(itemN)
+	    super.asignarAHabitacion(habitacion)
+	    this.nombreAccion = PREFIJO_USAR + itemN.nombre
 	}
 	
 	

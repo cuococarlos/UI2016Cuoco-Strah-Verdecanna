@@ -13,21 +13,24 @@ import org.uqbar.arena.bindings.PropertyAdapter
 class AgregarAccionIrAOtraHabitacionWindow extends SimpleWindow<AgregarAccionIrAOtraHabitacionAppModel>{
 	
 	new(WindowOwner owner, Habitacion hab,Laberinto lab) {
-		//super(owner, new AgregarHabitacionAppModel(biblioteca))
 		super(owner, new AgregarAccionIrAOtraHabitacionAppModel(hab,lab))
-		this.title = "Agregar Habitacion"
+		title = "Agregar Accion de ir a otra habitacion"
+		taskDescription = "Seleccionar una habitacion a la cual ir"
 	}
 
 	override protected createFormPanel(Panel mainPanel) {
+		
 		val editorPanel = new Panel(mainPanel)
 		editorPanel.layout = new ColumnLayout(2)
+		editorPanel.width = 800
 		
 		new Label(editorPanel).text = "Habitacion"
 		new Selector<Habitacion>(editorPanel) => [
 			allowNull (false)
-//		  hay que ver como funciona el tema de las listas
 			value <=> "habitacionDestino"
 			(items <=> "laberintoActual.habitaciones").adapter = new PropertyAdapter(Habitacion, "nombreHabitacion")
+			width = 100
+			height = 90
 		]
 					
 	}
@@ -35,7 +38,6 @@ class AgregarAccionIrAOtraHabitacionWindow extends SimpleWindow<AgregarAccionIrA
 
 	override protected addActions(Panel actionsPanel) {
 						
-		
 			new Button(actionsPanel) => [
 				caption = "Cancelar"
 				setAsDefault

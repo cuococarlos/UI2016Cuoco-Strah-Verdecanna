@@ -15,18 +15,18 @@ class AgregarAccionUsarElementoWindow extends SimpleWindow<AgregarAccionUsarElem
 	
 	
 	new(WindowOwner owner, Habitacion hab,Laberinto lab) {
-		//super(owner, new AgregarHabitacionAppModel(biblioteca))
 		super(owner, new AgregarAccionUsarElementoAppModel(hab,lab))
-		//this.title = "Agregar Habitacion"
+		title = "Agregar Accion de Usar un Elemento"
+		taskDescription = "Seleccione el Elemento que puede ser usado"
 	}
 	
-	override createContents(Panel mainPanel) {
-		this.title = "Agregara Accion de Usar un Elemento"
-		
-		new Label(mainPanel).text = "Seleccione el Elemento que puede ser usado"
+	
+	override protected createFormPanel(Panel mainPanel) {
+//		this.title = "Agregar Accion de Usar un Elemento"
+//		new Label(mainPanel).text = "Seleccione el Elemento que puede ser usado"
 		new Selector<Item>(mainPanel) => [
 			allowNull(false)
-			(items <=> "laberintoActual.todosLosItems").adapter = new PropertyAdapter(Item,"nombre")
+			(items <=> "laberintoActual.todosLosItems").adapter = new PropertyAdapter(Item, "nombre")
 			value <=> "itemActual"
 		] 
 		
@@ -37,17 +37,12 @@ class AgregarAccionUsarElementoWindow extends SimpleWindow<AgregarAccionUsarElem
 						this.close
 					]
 		]
-		
+
 	}
-	
-	
+
 	override protected addActions(Panel actionsPanel) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
-	override protected createFormPanel(Panel mainPanel) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
 	
 
 	

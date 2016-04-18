@@ -7,14 +7,14 @@ import org.uqbar.commons.utils.Observable
 @Observable
 class AccionIrAOtraHabitacion extends Accion{
 	
-	//Habitacion nueva
-
+	String nombreAccion 
+	
 	val PREFIJO_IR = "Ir a habitacion - "
 	
 	
 	new(Habitacion hab) {
 		habitacionDestino = hab
-		this.nombreAccion = PREFIJO_IR + hab.nombreHabitacion
+		//this.nombreAccion = PREFIJO_IR + habitacionDestino.nombreHabitacion
 	}
 	
 	
@@ -24,9 +24,9 @@ class AccionIrAOtraHabitacion extends Accion{
 	
 	
 	override void asignarAHabitacion(Habitacion habitacion){
-		habitacion.agregarAccion(this)		
-//		nombreAccion="Ir a"+habitacionDestino.nombreHabitacion			
-//	  	17/04 mirar esto 
+		habitacion.agregarAccion(this)
+		super.asignarAHabitacion(habitacion)    ////
+		this.nombreAccion = PREFIJO_IR + habitacionDestino.nombreHabitacion   ////
 	}		
 
 

@@ -19,7 +19,7 @@ class AgregarAccionIrAOtraHabitacionAppModel extends AgregarAccionAppModel{
 	new(Habitacion hab,Laberinto lab){
 		this.habitacionActual = hab
 		this.laberintoActual=lab
-		accionActual = new AccionIrAOtraHabitacion(habitacionDestino)
+		//accionActual = new AccionIrAOtraHabitacion(habitacionDestino)
 	}
 
 	
@@ -28,8 +28,8 @@ class AgregarAccionIrAOtraHabitacionAppModel extends AgregarAccionAppModel{
 		if (habitacionActual == null) {
 			throw new AgregarAccionException(GatoEncerradoCommons.AGREGAR_ACCION_EXCEPTION)
 		}	
+		accionActual = new AccionIrAOtraHabitacion(habitacionDestino)
 		accionActual.asignarAHabitacion(habitacionActual)	
-		
 	}
 		
 		

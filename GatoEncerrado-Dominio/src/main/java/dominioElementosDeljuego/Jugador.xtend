@@ -14,13 +14,13 @@ class Jugador {
 
 
 	def void hacerAccion(AccionAgarrarUnElemento accionDeAgarrar) {
-		this.inventario.add(accionDeAgarrar.item)
-		actuallaberinto.sacarItem(accionDeAgarrar.item)
+		this.inventario.add(accionDeAgarrar.itemN)
+		actuallaberinto.sacarItem(accionDeAgarrar.itemN)
 	}
 
 
 	def void hacerAccion(AccionUsarUnElemento accionDeUsar){		
-		inventario.remove(accionDeUsar.item)
+		inventario.remove(accionDeUsar.itemN)
 		actuallaberinto.accionYaRealizada(accionDeUsar)
 	}
 

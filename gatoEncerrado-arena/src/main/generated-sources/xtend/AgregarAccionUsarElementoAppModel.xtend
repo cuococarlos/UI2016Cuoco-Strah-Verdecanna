@@ -9,18 +9,23 @@ import dominioElementosDeljuego.Item
 @Observable
 class AgregarAccionUsarElementoAppModel extends AgregarAccionAppModel{
 	
-	Item itemActual
+	 Item itemActual
 	
 //esta habitacion y laberinto que recibo por parametro es la habitacionSeleccionada de la clase BibliotecaDeJuegoAppModel
 	new(Habitacion hab, Laberinto lab){
 		this.habitacionActual = hab
 		this.laberintoActual=lab
+//		itemParaAgregar = new Item
+//		accionActual = new AccionUsarUnElemento(itemParaAgregar)
+//		accionActual.asignarHabitacionDestino(habitacionActual)
+		
 	}
 
 	
 	def void crearYAgregarAccionDeUsarUnElemento(){		
+		accionActual = new AccionUsarUnElemento(itemActual)
 		accionActual.asignarAHabitacion(habitacionActual)
-		this.accionActual = new AccionUsarUnElemento(itemActual)
+		//this.accionActual = new AccionUsarUnElemento(itemActual)
 	}
 	
 	
