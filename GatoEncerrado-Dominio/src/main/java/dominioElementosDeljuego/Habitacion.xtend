@@ -4,9 +4,13 @@ import java.util.ArrayList
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
+import static org.uqbar.commons.model.ObservableUtils.*
+import gatoEncerradoExceptions.NombreYaExistenteException
+import commons.GatoEncerradoCommons
 
-@Observable
 @Accessors
+@Observable
+
 class Habitacion {
 	
 	 String nombreLaberinto
@@ -26,7 +30,7 @@ class Habitacion {
 
 	new(){
 		itemsHabitacion = new ArrayList<Item>
-		acciones = new ArrayList <Accion>
+		acciones = new ArrayList <Accion>()
 		habitaciones = new ArrayList <Habitacion>
 		isHabitacionFinal=false
 		isHabitacionInicial=false
@@ -64,7 +68,14 @@ class Habitacion {
 	
 	
 	def agregarAccion(Accion accion){		
+		chequearRepetidos(accion)
 		acciones.add(accion)
+	}
+	def chequearRepetidos(Accion accion){
+		if (acciones.exists[it.getNombreAccion == accion.getNombreAccion]) {
+			throw new NombreYaExistenteException(
+				GatoEncerradoCommons.AGREGAR_ACCION_EXISTENTE_EXCEPTION + '''«accion.getNombreAccion»''')
+		}
 	}
 
 
@@ -89,4 +100,16 @@ class Habitacion {
 		laberinto.habitaciones.add(habitacion)
 	}
 	
+//	def List<Accion> getAcciones(){
+//		acciones
+//	}
+	
+	def quitarAccion(Accion accion){
+		
+		eliminarAccion(accion)
+		//el nombre de la property por la cual se bindea las habitaciones de un laberinto se llama "habitaciones" por el getter definido, sino 
+		//la property se llamaria "habitacionesQueLaComponen"
+		firePropertyChanged(this, "acciones", acciones)
+	}
+
 }

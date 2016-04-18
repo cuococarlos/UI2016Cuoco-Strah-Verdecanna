@@ -10,35 +10,30 @@ import org.uqbar.commons.utils.Observable
 @Observable
 class AgregarHabitacionAppModel {
 
-	//BibliotecaDeJuego juego
 	Laberinto laberintoActual
 	String nombreHabitacion
-	
-	
-	def String getNombreHabitacion(){
+
+	def String getNombreHabitacion() {
 		return nombreHabitacion
 	}
-	
-	
-	def void setNombreHabitacion(String nombre){
+
+	def void setNombreHabitacion(String nombre) {
 		this.nombreHabitacion = nombre
 	}
-	
 
 	//este laberinto que recibo por parametro es el laberintoSeleccionado de la clase BibliotecaDeJuegoAppModel
-	new(Laberinto laberinto){
-		this.laberintoActual = laberinto 
+	new(Laberinto laberinto) {
+		this.laberintoActual = laberinto
 	}
-	
-	def void crearYAgregarHabitacion(){
+
+	def void crearYAgregarHabitacion() {
 		if (laberintoActual == null) {
 			throw new AgregarHabitacionException(GatoEncerradoCommons.AGREGAR_HABITACION_EXCEPTION)
 		}
-		if(nombreHabitacion == null){
+		if (nombreHabitacion == null) {
 			throw new AgregarHabitacionException(GatoEncerradoCommons.NOMBRE_HABITACION_VACIA_EXCEPTION)
 		}
 		laberintoActual.agregarHabitacion(nombreHabitacion)
 	}
-			
 
 }

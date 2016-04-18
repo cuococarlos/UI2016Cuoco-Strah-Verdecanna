@@ -111,7 +111,7 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		panelAcciones.layout = new VerticalLayout
 		panelAcciones.width = 300 minHeight = 250
 		new Label(panelAcciones).text = "Habitacion Seleccionada:"
-		new Label(panelAcciones)=> [value <=> "habitacionSeleccionada.nombreHabitacion"]
+		new Label(panelAcciones)=> [value <=> "laberintoSeleccionado.actualDeJuego.nombreHabitacion"]
 		
 		var panelEsEstadoInicialHabitacion = new Panel(panelAcciones)
 		panelEsEstadoInicialHabitacion.layout = new HorizontalLayout
@@ -119,6 +119,7 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		new CheckBox(panelEsEstadoInicialHabitacion) => [
 			bindEnabled(new NotNullObservable("laberintoSeleccionado.actualDeJuego"))
 			value <=> "habitacionSeleccionada.isHabitacionInicial"
+			//value <=> "laberintoSeleccionado.actualDeJuego.isHabitacionInicial"
 		]
 
 		var panelEsEstadoFinalHabitacion = new Panel(panelAcciones)
@@ -127,6 +128,7 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		new CheckBox(panelEsEstadoFinalHabitacion) => [
 			bindEnabled(new NotNullObservable("laberintoSeleccionado.actualDeJuego"))
 			value <=> "habitacionSeleccionada.isHabitacionFinal"
+			//value <=> "laberintoSeleccionado.actualDeJuego.isHabitacionFinal"
 		]
 
 		var panelListadoAccionesHabitacion = new Panel(panelAcciones)

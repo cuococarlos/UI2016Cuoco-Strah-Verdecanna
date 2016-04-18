@@ -18,7 +18,7 @@ class AccionUsarUnElemento extends Accion{
 		
 	new(Item nuevoItem){
 		itemN = nuevoItem
-		//this.nombreAccion = PREFIJO_USAR + item.nombre
+		this.nombreAccion = PREFIJO_USAR + itemN.nombre
 	}
 		
 	
@@ -28,9 +28,8 @@ class AccionUsarUnElemento extends Accion{
 
 
 	override void asignarAHabitacion(Habitacion habitacion){
-		habitacion.agregarElementoALaHabitacion(itemN)
 	    super.asignarAHabitacion(habitacion)
-	    this.nombreAccion = PREFIJO_USAR + itemN.nombre
+	    //this.nombreAccion = PREFIJO_USAR + itemN.nombre
 	}
 	
 	

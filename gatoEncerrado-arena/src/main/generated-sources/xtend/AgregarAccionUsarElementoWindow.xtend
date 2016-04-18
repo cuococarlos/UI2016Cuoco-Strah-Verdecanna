@@ -1,3 +1,4 @@
+import appModels.AgregarAccionUsarElementoAppModel
 import dominioElementosDeljuego.Habitacion
 import dominioElementosDeljuego.Item
 import dominioElementosDeljuego.Laberinto
@@ -10,7 +11,6 @@ import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
-import appModels.AgregarAccionUsarElementoAppModel
 
 class AgregarAccionUsarElementoWindow extends SimpleWindow<AgregarAccionUsarElementoAppModel> {
 
@@ -26,8 +26,8 @@ class AgregarAccionUsarElementoWindow extends SimpleWindow<AgregarAccionUsarElem
 		//		new Label(mainPanel).text = "Seleccione el Elemento que puede ser usado"
 		new Selector<Item>(mainPanel) => [
 			allowNull(false)
-			(items <=> "laberintoActual.todosLosItems").adapter = new PropertyAdapter(Item, "nombre")
 			value <=> "itemActual"
+			(items <=> "laberintoActual.todosLosItems").adapter = new PropertyAdapter(Item, "nombre")
 		]
 
 		new Label(mainPanel).text = "Cree la Accion a realizar"
@@ -35,7 +35,6 @@ class AgregarAccionUsarElementoWindow extends SimpleWindow<AgregarAccionUsarElem
 			caption = "Agregar Accion"
 			onClick [|
 				modelObject.crearYAgregarAccionDeUsarUnElemento()
-				setAsDefault
 				this.close
 			]
 		]

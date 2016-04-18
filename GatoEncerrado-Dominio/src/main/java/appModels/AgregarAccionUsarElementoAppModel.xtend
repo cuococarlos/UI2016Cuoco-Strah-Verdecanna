@@ -1,11 +1,13 @@
 package appModels
 
-import dominioElementosDeljuego.AccionUsarUnElemento
 import dominioElementosDeljuego.Habitacion
-import dominioElementosDeljuego.Item
 import dominioElementosDeljuego.Laberinto
-import org.eclipse.xtend.lib.annotations.Accessors
+import dominioElementosDeljuego.AccionUsarUnElemento
 import org.uqbar.commons.utils.Observable
+import org.eclipse.xtend.lib.annotations.Accessors
+import dominioElementosDeljuego.Item
+import commons.GatoEncerradoCommons
+import gatoEncerradoExceptions.AgregarAccionException
 
 @Accessors
 @Observable
@@ -18,16 +20,15 @@ class AgregarAccionUsarElementoAppModel extends AgregarAccionAppModel {
 		this.habitacionActual = hab
 		this.laberintoActual = lab
 
-	//		itemParaAgregar = new Item
-	//		accionActual = new AccionUsarUnElemento(itemParaAgregar)
-	//		accionActual.asignarHabitacionDestino(habitacionActual)
 	}
 
 	def void crearYAgregarAccionDeUsarUnElemento() {
+		if (itemActual == null) {
+			throw new AgregarAccionException(GatoEncerradoCommons.AGREGAR_ACCION_USAR_UN_ELEMENTO_VACIO)
+		}
 		accionActual = new AccionUsarUnElemento(itemActual)
 		accionActual.asignarAHabitacion(habitacionActual)
 
-	//this.accionActual = new AccionUsarUnElemento(itemActual)
 	}
 
 }
