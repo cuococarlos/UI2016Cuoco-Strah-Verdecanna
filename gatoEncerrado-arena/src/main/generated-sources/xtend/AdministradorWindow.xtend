@@ -133,7 +133,8 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		new Label(panelListadoAccionesHabitacion).text = "Acciones"
 
 		new List(panelListadoAccionesHabitacion)=> [
-			(items <=> "habitacionSeleccionada.acciones").adapter = new PropertyAdapter(Accion, "nombreAccion")
+			//(items <=> "habitacionSeleccionada.acciones").adapter = new PropertyAdapter(Accion, "nombreAccion")
+			(items <=> "laberintoSeleccionado.actualDeJuego.acciones").adapter = new PropertyAdapter(Accion, "nombreAccion")
 			width = 160
 			height = 90
 		]
@@ -155,10 +156,10 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 //   Metodos
 
 	def IrAPantallaAgregarAccion() {
-		if (this.modelObject.habitacionSeleccionada == null) {
+		if (this.modelObject.laberintoSeleccionado.actualDeJuego == null) {
 			throw new AgregarAccionException(GatoEncerradoCommons.AGREGAR_ACCION_EXCEPTION)
 		}
-		new AgregarAccionWindow(this, this.modelObject.habitacionSeleccionada, this.modelObject.laberintoSeleccionado).open
+		new AgregarAccionWindow(this, this.modelObject.laberintoSeleccionado.actualDeJuego, this.modelObject.laberintoSeleccionado).open
 	}
 
 	def IrAPantallaAgregarHabitacion() {
