@@ -87,5 +87,9 @@ class Laberinto {
 
 	def Habitacion comienzoLaberinto() {
 	}
+	
+	def id() {
+		return this.hashCode
+	}
 
 }

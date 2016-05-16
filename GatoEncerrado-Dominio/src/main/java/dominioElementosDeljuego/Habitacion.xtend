@@ -111,5 +111,9 @@ class Habitacion {
 		//la property se llamaria "habitacionesQueLaComponen"
 		firePropertyChanged(this, "acciones", acciones)
 	}
+	
+	def  id() {
+		this.hashCode
+	}
 
 }

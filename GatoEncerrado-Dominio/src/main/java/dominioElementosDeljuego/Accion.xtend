@@ -22,6 +22,10 @@ abstract class Accion implements ElementosJuego {
 	def void asignarHabitacionDestino(Habitacion habitacion){
 		habitacionDestino = habitacion
 	}
+	
+	def Integer id(){
+	this.hashCode
+	}
 
 
 	
