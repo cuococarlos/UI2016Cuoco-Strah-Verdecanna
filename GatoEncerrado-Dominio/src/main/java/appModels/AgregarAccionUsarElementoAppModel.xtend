@@ -26,7 +26,10 @@ class AgregarAccionUsarElementoAppModel extends AgregarAccionAppModel {
 		if (itemActual == null) {
 			throw new AgregarAccionException(GatoEncerradoCommons.AGREGAR_ACCION_USAR_UN_ELEMENTO_VACIO)
 		}
-		accionActual = new AccionUsarUnElemento(itemActual)
+/**
+ *   hay que ver como pasar una accion en este parametro 
+ */		
+//		accionActual = new AccionUsarUnElemento(itemActual)   new Accion ??
 		accionActual.asignarAHabitacion(habitacionActual)
 
 	}

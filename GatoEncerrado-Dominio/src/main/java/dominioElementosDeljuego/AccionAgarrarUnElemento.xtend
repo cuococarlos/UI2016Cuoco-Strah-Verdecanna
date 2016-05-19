@@ -22,10 +22,6 @@ String nombreAccion //Ojo que es un parche, mejorar si es posible
 		this.nombreAccion = PREFIJO_AGARRAR + itemN.nombre
 	}
 		
-	
-	override realizarAccion(Jugador jugador) {
-		jugador.hacerAccion(this)
-	}
 
 
 	override void asignarAHabitacion(Habitacion habitacion){

@@ -53,8 +53,9 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		new List(panelDeHabitaciones) => [
 			(items <=> "laberintoSeleccionado.habitacionesQueLaComponen").adapter = new PropertyAdapter(Habitacion,
 				"nombreHabitacion")
-			//value <=> "habitacionSeleccionada"
-			value <=> "laberintoSeleccionado.actualDeJuego"
+			value <=> "habitacionSeleccionada"
+			//value <=> "laberintoSeleccionado.actualDeJuego"
+			//value <=> "laberintoSeleccionado.actualDeJuego"
 			width = 200
 			height = 100
 		]
@@ -68,7 +69,8 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		]
 		new Button(botonera) => [
 			caption = "Quitar Habitacion"
-			bindEnabled(new NotNullObservable("laberintoSeleccionado.actualDeJuego"))
+			//bindEnabled(new NotNullObservable("laberintoSeleccionado.actualDeJuego"))
+			bindEnabled(new NotNullObservable("habitacionSeleccionada"))	
 			onClick [| modelObject.quitarHabitacion() ]
 		]
 	}
@@ -111,14 +113,15 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		panelAcciones.layout = new VerticalLayout
 		panelAcciones.width = 300 minHeight = 250
 		new Label(panelAcciones).text = "Habitacion Seleccionada:"
-		new Label(panelAcciones)=> [value <=> "laberintoSeleccionado.actualDeJuego.nombreHabitacion"]
+		//new Label(panelAcciones)=> [value <=> "laberintoSeleccionado.actualDeJuego.nombreHabitacion"]
+		new Label(panelAcciones)=> [value <=> "habitacionSeleccionada"]
 		
 		var panelEsEstadoInicialHabitacion = new Panel(panelAcciones)
 		panelEsEstadoInicialHabitacion.layout = new HorizontalLayout
 		new Label(panelEsEstadoInicialHabitacion).text = "Es Inicial?"
 		new CheckBox(panelEsEstadoInicialHabitacion) => [
 			bindEnabled(new NotNullObservable("laberintoSeleccionado.actualDeJuego"))
-			value <=> "habitacionSeleccionada.isHabitacionInicial"
+			(value <=> "habitacionSeleccionada.isHabitacionInicial").transformer = new NullToBooleanTransformer()
 			//value <=> "laberintoSeleccionado.actualDeJuego.isHabitacionInicial"
 		]
 
@@ -127,7 +130,7 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		new Label(panelEsEstadoFinalHabitacion).text = "Es Final?"
 		new CheckBox(panelEsEstadoFinalHabitacion) => [
 			bindEnabled(new NotNullObservable("laberintoSeleccionado.actualDeJuego"))
-			value <=> "habitacionSeleccionada.isHabitacionFinal"
+			(value <=> "habitacionSeleccionada.isHabitacionFinal").transformer = new NullToBooleanTransformer()
 			//value <=> "laberintoSeleccionado.actualDeJuego.isHabitacionFinal"
 		]
 
@@ -135,8 +138,8 @@ class AdministradorWindow extends SimpleWindow<BibliotecaDeJuegoAppModel> {
 		new Label(panelListadoAccionesHabitacion).text = "Acciones"
 
 		new List(panelListadoAccionesHabitacion)=> [
-			//(items <=> "habitacionSeleccionada.acciones").adapter = new PropertyAdapter(Accion, "nombreAccion")
-			(items <=> "laberintoSeleccionado.actualDeJuego.acciones").adapter = new PropertyAdapter(Accion, "nombreAccion")
+			(items <=> "habitacionSeleccionada.acciones").adapter = new PropertyAdapter(Accion, "nombreAccion")
+			//(items <=> "laberintoSeleccionado.actualDeJuego.acciones").adapter = new PropertyAdapter(Accion, "nombreAccion")
 			width = 160
 			height = 90
 		]

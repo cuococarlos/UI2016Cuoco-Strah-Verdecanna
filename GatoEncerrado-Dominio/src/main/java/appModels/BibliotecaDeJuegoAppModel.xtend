@@ -32,11 +32,13 @@ class BibliotecaDeJuegoAppModel {
 
 		//laberintoSeleccionado.quitarHabitacion(habitacionSeleccionada)
 		if (laberintoSeleccionado.habitacionesQueLaComponen.size == 1) {
-			laberintoSeleccionado.quitarHabitacion(laberintoSeleccionado.actualDeJuego)
+			laberintoSeleccionado.quitarHabitacion(habitacionSeleccionada)
+			//laberintoSeleccionado.quitarHabitacion(laberintoSeleccionado.actualDeJuego)
 			quitarLaberinto()
 		}
 		else{
-			laberintoSeleccionado.quitarHabitacion(laberintoSeleccionado.actualDeJuego)	
+			laberintoSeleccionado.quitarHabitacion(habitacionSeleccionada)
+			//laberintoSeleccionado.quitarHabitacion(laberintoSeleccionado.actualDeJuego)	
 		}
 		
 		//habitacionSeleccionada = new Habitacion // parche para evitar puntero a Null

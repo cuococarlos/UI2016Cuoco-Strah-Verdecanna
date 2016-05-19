@@ -5,7 +5,7 @@ import org.uqbar.arena.Application
 class GatoEncerradoApplication extends Application {
 
 	override protected createMainWindow() {
-		//new AdministradorWindow(this, new BibliotecaDeJuego)
+	//	new AdministradorWindow(this, new BibliotecaDeJuego)
 
 		val BibliotecaDeJuego biblioteca = new BibliotecaDeJuego() => [
 			agregarLaberinto(new Laberinto("Mansion de la Muerte") => [ 

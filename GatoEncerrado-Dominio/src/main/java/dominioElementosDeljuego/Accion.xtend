@@ -11,9 +11,7 @@ abstract class Accion implements ElementosJuego {
 	protected String nombreAccion
 		
 	
-	def void realizarAccion(Jugador j)
-	
-	
+		
 	override void asignarAHabitacion(Habitacion habitacion){
 		habitacion.agregarAccion(this)			
 	}

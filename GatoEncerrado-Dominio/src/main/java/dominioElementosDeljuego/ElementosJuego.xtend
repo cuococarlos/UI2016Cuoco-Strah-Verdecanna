@@ -1,8 +1,8 @@
 package dominioElementosDeljuego
 
 interface ElementosJuego {
-	def void asignarAHabitacion(Habitacion habitacion)
-	   
-	
-	
-	}
+def void asignarAHabitacion(Habitacion habitacion)
+   
+
+
+}

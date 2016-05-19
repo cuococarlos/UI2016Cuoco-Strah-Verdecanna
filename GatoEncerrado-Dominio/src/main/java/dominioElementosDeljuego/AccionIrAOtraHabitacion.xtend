@@ -18,10 +18,6 @@ class AccionIrAOtraHabitacion extends Accion{
 	}
 	
 	
-	override realizarAccion(Jugador jugador) {
-		jugador.pasarDeHabitacion(habitacionDestino)
-	}
-	
 	
 	override void asignarAHabitacion(Habitacion habitacion){ 
 		super.asignarAHabitacion(habitacion)    ////
