@@ -74,22 +74,26 @@ class Laberinto {
 	}
 
 	def List<Item> todosLosItems() {
-
 		//  this.habitacionesQueLaComponen.for[h| h.itemsHabitacion.] .Mensaje que se traiga la colecicon de todos los items
 		val allItems = new ArrayList<Item>
 		this.habitacionesQueLaComponen.forEach[hab|allItems.addAll(hab.itemsHabitacion)] //Mirar como hacerlo con fold o collect,algo mas performante
 		allItems
 	}
 
+
 	def String getNombreLaberinto() {
 		return this.nombreLaberinto
 	}
 
-	def Habitacion comienzoLaberinto() {
-	}
-	
+
 	def Integer id() {
 		return this.hashCode
 	}
+
+	
+	def Habitacion getHabitacionInicial(){
+		return habitacionesQueLaComponen.findFirst[hab|hab.isHabitacionInicial]
+	}
+	
 
 }
