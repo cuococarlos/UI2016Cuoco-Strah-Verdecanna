@@ -4,6 +4,7 @@ import java.util.List
 import java.util.ArrayList
 import java.util.Map
 import org.eclipse.xtend.lib.annotations.Accessors
+import java.util.HashMap
 
 @Accessors
 class EstadoDeJuego {
@@ -14,10 +15,22 @@ class EstadoDeJuego {
 	Map<Integer, List<Accion>> accionesDePartida   
 	
  
-	new(Habitacion habitacionInicial){
+	new(Laberinto lab){
 		inventario = new ArrayList<Item>();
 		ganado = false
-		habitacionActual = habitacionInicial
+		habitacionActual = lab.getHabitacionInicial()//definir
+		accionesDePartida = inicializarAccionesDePartida(lab)
+		
+	}
+	
+	def Map<Integer,List<Accion>>inicializarAccionesDePartida(Laberinto laberinto) {
+		var aux=new HashMap()
+		for(Habitacion hab:laberinto.habitaciones ){
+			aux.put(hab.id,hab.acciones)
+		}	
+	
+		aux
+	
 	}
 	
 	

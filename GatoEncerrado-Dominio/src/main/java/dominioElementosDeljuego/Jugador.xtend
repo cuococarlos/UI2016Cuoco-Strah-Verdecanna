@@ -52,7 +52,11 @@ class Jugador {
 	
 	
 	def EstadoDeJuego traerPartida(Laberinto laberinto){
-		return this.partidas.get(laberinto.id)
+	 	if(!partidas.containsKey(laberinto.id)){
+			partidas.put(laberinto.id,new EstadoDeJuego(laberinto))
+			
+		}
+		return partidas.get(laberinto.id)
 	}
 	
 }
