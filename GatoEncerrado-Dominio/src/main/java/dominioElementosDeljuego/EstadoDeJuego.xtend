@@ -3,11 +3,12 @@ package dominioElementosDeljuego
 import java.util.List
 import java.util.ArrayList
 import java.util.Map
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 class EstadoDeJuego {
 	
 	List<Item> inventario
-	List<Accion> accionesRealizadas
 	Boolean ganado  // ver de que manera se gana para poner en true
 	Habitacion habitacionActual
 	Map<Integer, List<Accion>> accionesDePartida   
@@ -15,14 +16,14 @@ class EstadoDeJuego {
  
 	new(Habitacion habitacionInicial){
 		inventario = new ArrayList<Item>();
-		accionesRealizadas = new ArrayList<Accion>();
 		ganado = false
 		habitacionActual = habitacionInicial
 	}
 	
 	
 	def realizarAccion(Accion accion) {
-		this.accionesRealizadas.add(accion)
+		accionesDePartida.get(habitacionActual.id).remove(accion)
+		//revisar si efectivamente la accion borrada se refleja en el mapa
 	}
 
 
@@ -32,7 +33,7 @@ class EstadoDeJuego {
 
 
 	def chequearAccionYaRealizada(Accion accion) {
-		return this.accionesRealizadas.contains(accion)
+		return ! this.accionesDePartida.get(habitacionActual.id).contains(accion)
 	}
 
 	
@@ -51,10 +52,14 @@ class EstadoDeJuego {
 	}
 	
 	def agregarAccionDePartida(AccionUsarUnElemento accionUsar) {
-		var List<Accion> aux = accionesDePartida.get(this.habitacionActual.id)
+		var List<Accion> aux = accionesDePartida.get(habitacionActual.id)
 		aux.add(accionUsar.accionRevelada)
 		accionesDePartida.put(this.habitacionActual.id, aux) 
 	}
 
-
+	def List<Accion> accionesPartidaDeHab(Habitacion hab)
+	{
+		return accionesDePartida.get(hab.id)
+		
+	}
 }
