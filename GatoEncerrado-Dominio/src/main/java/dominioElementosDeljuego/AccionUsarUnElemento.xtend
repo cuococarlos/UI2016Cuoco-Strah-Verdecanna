@@ -24,6 +24,21 @@ class AccionUsarUnElemento extends Accion{
 		
 
 
+	
+	override ResultadoAccion ejecutar(Habitacion habitacion, Usuario usuario){
+		this.validarAccionEjecutable(estadoDelJuego)
+		estadoDelJuego.sacarDelInventario(item)
+		estadoDelJuego.agregarAccion(accionRevelada)
+		
+		new ResultadoAccion()
+			.conTipo(ResultadoAccion.TiposDeResultados.USAR_ITEM)
+			.conUsuario(usuario)
+			.conAccionesDisponibles(estadoDelJuego.accionesPara(habitacion))
+			.conInventario(estadoDelJuego.inventario())
+			.build();
+	}
+	
+
 	override void asignarAHabitacion(Habitacion habitacion){
 	    super.asignarAHabitacion(habitacion)
 	    //this.nombreAccion = PREFIJO_USAR + itemN.nombre

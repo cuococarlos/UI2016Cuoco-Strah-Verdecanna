@@ -75,4 +75,6 @@ class EstadoDeJuego {
 		return accionesDePartida.get(hab.id)
 		
 	}
+	
+	
 }
