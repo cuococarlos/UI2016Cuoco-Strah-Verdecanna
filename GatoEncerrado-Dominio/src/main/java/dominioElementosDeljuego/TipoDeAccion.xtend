@@ -1,0 +1,9 @@
+package dominioElementosDeljuego
+
+enum TipoDeAccion{
+
+
+
+
+	
+}
