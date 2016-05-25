@@ -76,5 +76,11 @@ class EstadoDeJuego {
 		
 	}
 	
+	def chequearItemEnInventario(Item item) {
+		inventario.contains(item)
+	}
+	
+	
+	
 	
 }

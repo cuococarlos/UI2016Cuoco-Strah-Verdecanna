@@ -22,7 +22,15 @@ String nombreAccion //Ojo que es un parche, mejorar si es posible
 		this.nombreAccion = PREFIJO_AGARRAR + itemN.nombre
 	}
 		
-
+	override 	ejecutar(Jugador jugador,Habitacion hab){
+		val estadoDeJuego= jugador.traerPartidaActual()		
+		if( this.chequearSiSePuedeEjecutarAccion(estadoDeJuego))
+		{
+			estadoDeJuego.agregarAlInventario(this.itemN)
+			estadoDeJuego.realizarAccion(this)
+		}
+		jugador.actualizarEstado(estadoDeJuego)//25-05:Podria llamar a un Super para no invocar este metodo en todas las acciones???
+	}
 
 	override void asignarAHabitacion(Habitacion habitacion){
 	    super.asignarAHabitacion(habitacion)
