@@ -3,12 +3,12 @@ package dominioElementosDeljuego
 class Dato {
 	
 	String nombre;	
-	Habitacion habitacion;
+	Object object;// Para que pueda pasarle cualquier tipo del dominio
 	
 	
-	new(String nombre, Habitacion habitacion){
+	new(String nombre, Object elemDeDominio){
 		this.nombre = nombre;
-		this.habitacion = habitacion;
+		this.object = elemDeDominio;
 	}
 	
 	

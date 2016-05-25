@@ -80,6 +80,9 @@ class EstadoDeJuego {
 		inventario.contains(item)
 	}
 	
+	def accionesHabitacionActual(){
+		return accionesPartidaDeHab(habitacionActual)
+	}
 	
 	
 	

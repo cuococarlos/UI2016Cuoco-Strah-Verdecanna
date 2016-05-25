@@ -30,6 +30,7 @@ class AccionIrAOtraHabitacion extends Accion{
 			estadoDeJuego.irAHabitacion(this.habitacionDestino)
 			jugador.actualizarEstado(estadoDeJuego)
 		}
+		new ResultadoAccionMoverse(estadoDeJuego.habitacionActual,estadoDeJuego.accionesHabitacionActual)
 	}		
 //		new ResultadoAccionBuilder()
 //			.conTipo(ResultadoAccion.TiposDeResultados.MOVERSE_DE_HABITACION)

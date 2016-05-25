@@ -30,6 +30,7 @@ String nombreAccion //Ojo que es un parche, mejorar si es posible
 			estadoDeJuego.realizarAccion(this)
 		}
 		jugador.actualizarEstado(estadoDeJuego)//25-05:Podria llamar a un Super para no invocar este metodo en todas las acciones???
+		new ResultadoAccionAgarrar(estadoDeJuego.inventario,estadoDeJuego.accionesHabitacionActual)	
 	}
 
 	override void asignarAHabitacion(Habitacion habitacion){

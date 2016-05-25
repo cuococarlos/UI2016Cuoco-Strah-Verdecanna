@@ -34,22 +34,13 @@ class AccionUsarUnElemento extends Accion{
 		}
 		//25-05:OJO aca si no se ejecuta no hay que tirar una exception
 		jugador.actualizarEstado(estadoDeJuego)
+	
+		new ResultadoAccionUsar(estadoDeJuego.inventario,estadoDeJuego.accionesHabitacionActual )	
 	}
 	
 	
-//	override ResultadoAccion ejecutar(Habitacion habitacion, Usuario usuario){
-//		this.validarAccionEjecutable(estadoDelJuego)
-//		estadoDelJuego.sacarDelInventario(item)
-//		estadoDelJuego.agregarAccion(accionRevelada)
 //		
-//		new ResultadoAccion()
-//			.conTipo(ResultadoAccion.TiposDeResultados.USAR_ITEM)
-//			.conUsuario(usuario)
-//			.conAccionesDisponibles(estadoDelJuego.accionesPara(habitacion))
-//			.conInventario(estadoDelJuego.inventario())
-//			.build();
-//	}
-//	
+	
 
 	override void asignarAHabitacion(Habitacion habitacion){
 	    super.asignarAHabitacion(habitacion)

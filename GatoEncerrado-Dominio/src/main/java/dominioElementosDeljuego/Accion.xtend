@@ -26,7 +26,7 @@ abstract class Accion implements ElementosJuego {
 	def chequearAccionYaRealizada(EstadoDeJuego est) {
 		return ! est.accionesDePartida.get(est.habitacionActual.id).contains(this)
 	}
-	def ejecutar(Jugador jugador,Habitacion hab){}	
+	def ResultadoAccion ejecutar(Jugador jugador,Habitacion hab){}	
 	def Integer id(){
 	this.hashCode
 	}
