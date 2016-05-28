@@ -11,12 +11,13 @@ import java.util.HashMap
 @Accessors
 class Jugador {
 	
-	
+	String nombreDeJugador
     EstadoDeJuego  partidaJugando
 	Map<Integer, EstadoDeJuego> partidas
 
 
-	new(){
+	new(String nombre){
+		nombreDeJugador=nombre;
 		partidas = new HashMap<Integer, EstadoDeJuego>();	
 	}
 
@@ -48,5 +49,7 @@ class Jugador {
 	def actualizarEstado(EstadoDeJuego juego) {
 		partidaJugando = juego
 	}
-	
+	def id(){
+		this.hashCode
+	}
 }
