@@ -19,6 +19,7 @@ class EstadoDeJuego {
 		inventario = new ArrayList<Item>();
 		ganado = false
 		habitacionActual = lab.getHabitacionInicial()//definir
+		println(habitacionActual)
 		accionesDePartida = inicializarAccionesDePartida(lab)
 		
 	}

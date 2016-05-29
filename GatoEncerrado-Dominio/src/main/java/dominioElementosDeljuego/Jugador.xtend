@@ -50,6 +50,7 @@ class Jugador {
 		partidaJugando = juego
 	}
 	def id(){
-		this.hashCode
+		// comentado para probar this.hashCode
+		return 1
 	}
 }

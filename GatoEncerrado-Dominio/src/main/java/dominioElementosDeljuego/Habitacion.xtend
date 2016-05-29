@@ -60,7 +60,9 @@ class Habitacion {
 		}
 		return this.isHabitacionInicial
 	}
-	
+	def esHabitacionInicial(){
+		isHabitacionInicial=true
+	}
 	
 	def existeItem(Item i) {
 		return itemsHabitacion.exists[item|item.equals(i)] 
