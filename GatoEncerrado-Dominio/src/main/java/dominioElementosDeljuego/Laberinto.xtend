@@ -90,7 +90,10 @@ class Laberinto {
 		return this.hashCode
 	}
 
-	
+	def agregarHabitacionPreArmada(Habitacion hab){
+		
+		habitacionesQueLaComponen.add(hab)
+	}
 	def Habitacion getHabitacionInicial(){
 		return habitacionesQueLaComponen.findFirst[hab|hab.isHabitacionInicial]
 	}

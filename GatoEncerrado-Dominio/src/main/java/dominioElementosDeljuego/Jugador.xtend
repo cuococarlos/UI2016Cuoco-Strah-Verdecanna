@@ -29,7 +29,7 @@ class Jugador {
 	
 	//FIXME: NO tiene sentido lo que estas haciendo aca, minimamente el nombre traerPartida no es expresivo con el dominio
 	//a lo sumo iniciarPartida, y solo va al jugador si tiene responsabilidades que tomar
-	def EstadoDeJuego inicializarPartida(Laberinto laberinto){
+	def inicializarPartida(Laberinto laberinto){
 	 	if(!partidas.containsKey(laberinto.id)){
 			partidas.put(laberinto.id,new EstadoDeJuego(laberinto))
 			//??? si no la tiene lo creas... ok... entonces de nuevo por que se llama traer si inicializa
