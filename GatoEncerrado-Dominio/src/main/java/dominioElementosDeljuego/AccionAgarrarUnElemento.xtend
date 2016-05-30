@@ -24,8 +24,9 @@ String nombreAccion //Ojo que es un parche, mejorar si es posible
 		
 	override 	ejecutar(Jugador jugador,Habitacion hab){
 		val estadoDeJuego= jugador.traerPartidaActual()		
-		if( this.chequearSiSePuedeEjecutarAccion(estadoDeJuego))
+		if(! this.chequearSiSePuedeEjecutarAccion(estadoDeJuego))
 		{
+			
 			estadoDeJuego.agregarAlInventario(this.itemN)
 			estadoDeJuego.realizarAccion(this)
 		}

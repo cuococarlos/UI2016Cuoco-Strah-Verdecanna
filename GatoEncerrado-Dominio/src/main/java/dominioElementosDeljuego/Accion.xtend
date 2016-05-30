@@ -24,7 +24,7 @@ abstract class Accion implements ElementosJuego {
 		return chequearAccionYaRealizada(est) && habitacionDestino.equals(est.habitacionActual)
 	}
 	def chequearAccionYaRealizada(EstadoDeJuego est) {
-		return ! est.accionesDePartida.get(est.habitacionActual.id).contains(this)
+		return   ! est.accionesDePartida.get(est.habitacionActual.id).contains(this)
 	}
 	def ResultadoAccion ejecutar(Jugador jugador,Habitacion hab){}	
 	def Integer id(){

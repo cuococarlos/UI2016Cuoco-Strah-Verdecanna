@@ -25,7 +25,7 @@ class AccionUsarUnElemento extends Accion{
 
 	override  ejecutar(Jugador jugador,Habitacion hab){
 		val estadoDeJuego= jugador.traerPartidaActual()		
-		if(this.chequearSiSePuedeEjecutarAccion(estadoDeJuego)&&
+		if( ! this.chequearSiSePuedeEjecutarAccion(estadoDeJuego)&&
 		     estadoDeJuego.chequearItemEnInventario(this.itemN))
 		{
 			estadoDeJuego.sacarDelInventario(this.itemN)

@@ -12,8 +12,6 @@ abstract class ResultadoAccion {
 	
 	
 	def List<Dato> getDatos();
-	
-	
 }
 //	new ResultadoAccion(){
 //			.conTipo(ResultadoAccion.TiposDeResultados.USAR_ITEM)

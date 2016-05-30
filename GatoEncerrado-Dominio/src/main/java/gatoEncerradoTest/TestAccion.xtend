@@ -14,6 +14,9 @@ class TestAccion {
 	Item i
 	AgregarAccionAgarrarElementoAppModel app 
 	Laberinto lab
+	
+	
+	
 	@Before
 	def void setUp(){
 		habitacionActual= new Habitacion("Comedor")
@@ -30,4 +33,7 @@ class TestAccion {
 		app.crearYAgregarAccionDeAgarrarElemento()
 		assertEquals(habitacionActual.acciones.length,1)
 		}
+	
+		
+		
 }
