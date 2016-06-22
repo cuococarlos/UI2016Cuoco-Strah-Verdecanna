@@ -15,7 +15,7 @@ class Laberinto {
 	List<Habitacion> habitacionesQueLaComponen
 	Habitacion actualDeJuego
 	Habitacion habitacionALaCualIr
-
+	String descripcion;
 	String nombreLaberinto
 
 	new() {
@@ -27,6 +27,11 @@ class Laberinto {
 	new(String nombre) {
 		this()
 		nombreLaberinto = nombre
+	}
+	new (String nombre,String des){
+		this()
+		nombreLaberinto=nombre
+		descripcion=des
 	}
 
 	def crearLaberinto(String lab) {
