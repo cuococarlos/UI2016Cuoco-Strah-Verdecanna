@@ -17,7 +17,7 @@ class Laberinto {
 	Habitacion habitacionALaCualIr
 	String descripcion;
 	String nombreLaberinto
-
+	Integer idHardcode
 	new() {
 
 		//this.habitacionesQueLaComponen = new ArrayList<Habitacion>()
@@ -92,7 +92,8 @@ class Laberinto {
 
 
 	def Integer id() {
-		return this.hashCode
+		//return this.hashCode
+		return idHardcode
 	}
 
 	def agregarHabitacionPreArmada(Habitacion hab){
